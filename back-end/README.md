@@ -144,6 +144,7 @@ Após instalar as dependências, ainda dentro da pasta `back-end`:
 ## 1. Aplicar migrations
 
 ```bash
+ uv run python manage.py makemigrations {table_name}
 uv run python manage.py migrate
 ```
 

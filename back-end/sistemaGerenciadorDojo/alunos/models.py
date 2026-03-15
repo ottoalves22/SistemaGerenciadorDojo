@@ -6,6 +6,9 @@ from django.utils.translation import gettext_lazy as _
 class Modalidade(models.Model):
     nome_modalidade = models.CharField(max_length=60, default="Jiu-Jitsu")
 
+    def __str__(self):
+        return self.nome_modalidade
+
 
 class AlunoJiuJitsu(models.Model):
     class FaixaJiuJitsu(models.TextChoices):
@@ -44,8 +47,11 @@ class AlunoJiuJitsu(models.Model):
     telefone = models.CharField(max_length=60)
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nome
 
-class AlunoJudo:
+
+class AlunoJudo(models.Model):
     class FaixaJudo(models.TextChoices):
         BRANCA = "BRANCA", "Branca"
         CINZA = "CINZA", "Cinza"
@@ -66,8 +72,11 @@ class AlunoJudo:
     telefone = models.CharField(max_length=60)
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.nome
 
-class AlunoKravMaga:
+
+class AlunoKravMaga(models.Model):
     class FaixaJudo(models.TextChoices):
         BRANCA = "BRANCA", "Branca"
         AMARELA = "AMARELA", "Amarela"
@@ -86,3 +95,6 @@ class AlunoKravMaga:
     )
     telefone = models.CharField(max_length=60)
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.nome
