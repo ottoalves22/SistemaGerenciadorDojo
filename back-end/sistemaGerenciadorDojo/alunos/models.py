@@ -7,8 +7,8 @@ class Modalidade(models.Model):
     nome_modalidade = models.CharField(max_length=60, default="Jiu-Jitsu")
 
 
-class AlunoJiu(models.Model):
-    class CorFaixa(models.TextChoices):
+class AlunoJiuJitsu(models.Model):
+    class FaixaJiuJitsu(models.TextChoices):
         # Iniciante
         BRANCA = "branca", _("Branca")
 
@@ -39,7 +39,50 @@ class AlunoJiu(models.Model):
     data_ingresso = models.DateTimeField()
     data_nascimento = models.DateTimeField()
     cor_faixa = models.CharField(
-        max_length=20, choices=CorFaixa.choices, default=CorFaixa.BRANCA
+        max_length=20, choices=FaixaJiuJitsu.choices, default=FaixaJiuJitsu.BRANCA
+    )
+    telefone = models.CharField(max_length=60)
+    modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
+
+
+class AlunoJudo:
+    class FaixaJudo(models.TextChoices):
+        BRANCA = "BRANCA", "Branca"
+        CINZA = "CINZA", "Cinza"
+        AZUL = "AZUL", "Azul"
+        AMARELA = "AMARELA", "Amarela"
+        LARANJA = "LARANJA", "Laranja"
+        VERDE = "VERDE", "Verde"
+        ROXA = "ROXA", "Roxa"
+        MARROM = "MARROM", "Marrom"
+        PRETA = "PRETA", "Preta"
+
+    nome = models.CharField(max_length=60)
+    data_ingresso = models.DateTimeField()
+    data_nascimento = models.DateTimeField()
+    cor_faixa = models.CharField(
+        max_length=20, choices=FaixaJudo.choices, default=FaixaJudo.BRANCA
+    )
+    telefone = models.CharField(max_length=60)
+    modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
+
+
+class AlunoKravMaga:
+    class FaixaJudo(models.TextChoices):
+        BRANCA = "BRANCA", "Branca"
+        AMARELA = "AMARELA", "Amarela"
+        LARANJA = "LARANJA", "Laranja"
+        VERDE = "VERDE", "Verde"
+        AZUL = "AZUL", "Azul"
+        MARROM = "MARROM", "Marrom"
+
+        PRETA_1_DAN = "PRETA", "Preta"
+
+    nome = models.CharField(max_length=60)
+    data_ingresso = models.DateTimeField()
+    data_nascimento = models.DateTimeField()
+    cor_faixa = models.CharField(
+        max_length=20, choices=FaixaJudo.choices, default=FaixaJudo.BRANCA
     )
     telefone = models.CharField(max_length=60)
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE)
