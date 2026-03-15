@@ -98,3 +98,6 @@ class AlunoKravMaga(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+# TODO: Talvez criar um campo de "Mensalidade em dia" Boolean. A cada dia x (vencimento dia 10, por exemplo), se tiver pago, marcamos True, se não desmarcamos e emitimos um aviso
