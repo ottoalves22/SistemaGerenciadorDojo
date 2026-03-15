@@ -1,5 +1,3 @@
-# SistemaGerenciadorDojo - Projeto Integrador Grupo 15 - Univesp 2026
-
 # Sistema Gerenciador Dojo
 
 Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de artes marciais. O projeto utiliza a estrutura padrão do Django para configuração do backend e gerenciamento da aplicação.
@@ -10,27 +8,27 @@ Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de
 
 ```
 .
-├── .venv/                     # Ambiente virtual Python
-├── back-end/
+├── .venv/                     
+├── back-end/                  # Diretório do backend
 │
 ├── sistemaGerenciadorDojo/    # Projeto principal Django
-│   └── SGD/                   # Configurações do projeto Django
+│   └── SGD/                   
 │       ├── __init__.py
-│       ├── asgi.py            # Entry-point ASGI
-│       ├── settings.py        # Configurações do projeto
-│       ├── urls.py            # Rotas principais
-│       └── wsgi.py            # Entry-point WSGI
+│       ├── asgi.py            
+│       ├── settings.py        
+│       ├── urls.py            
+│       └── wsgi.py            
 │
-├── db.sqlite3                 # Banco de dados SQLite
-├── manage.py                  # CLI de gerenciamento do Django
+├── db.sqlite3                 
+├── manage.py                  
 │
-├── main.py                    # Script auxiliar para execução/custom logic
+├── main.py                    
 │
-├── pyproject.toml             # Configuração de dependências do projeto
-├── uv.lock                    # Lockfile das dependências (uv)
+├── pyproject.toml             # Dependências do projeto
+├── uv.lock                    # Lockfile gerado pelo uv
 │
-├── .python-version            # Versão do Python utilizada
-├── README.md                  # Documentação do projeto
+├── .python-version            
+├── README.md                  
 └── .gitignore
 ```
 
@@ -40,9 +38,8 @@ Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de
 
 * **Python**
 * **Django**
-* **SQLite** (banco de dados padrão)
-* **uv** (gerenciamento de dependências)
-* **ASGI / WSGI** para execução do servidor
+* **SQLite**
+* **uv** para gerenciamento de dependências
 
 ---
 
@@ -57,59 +54,113 @@ cd sistemaGerenciadorDojo
 
 ---
 
-## 2. Criar ambiente virtual
+# 📦 Gerenciamento de Dependências com UV
 
-Caso não esteja usando o `.venv` existente:
+Este projeto utiliza **uv** para gerenciar dependências Python.
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
-```
-
-Windows:
-
-```bash
-.venv\Scripts\activate
-```
+Toda a instalação deve ser feita **dentro da pasta `back-end`**.
 
 ---
 
-## 3. Instalar dependências
+## 1. Instalar o uv
 
-Se estiver utilizando **uv**:
+Caso não tenha instalado:
+
+Linux / Mac:
 
 ```bash
-uv sync
+curl -Ls https://astral.sh/uv/install.sh | sh
 ```
 
 Ou via pip:
 
 ```bash
-pip install -r requirements.txt
+pip install uv
+```
+
+Verifique a instalação:
+
+```bash
+uv --version
 ```
 
 ---
 
-## 4. Aplicar migrations
+## 2. Entrar na pasta do backend
 
 ```bash
-python manage.py migrate
+cd back-end
 ```
 
 ---
 
-## 5. Criar superusuário (opcional)
+## 3. Instalar as dependências do projeto
 
 ```bash
-python manage.py createsuperuser
+uv sync
+```
+
+Esse comando irá:
+
+* criar automaticamente um ambiente virtual
+* instalar todas as dependências definidas em `pyproject.toml`
+* utilizar as versões fixadas em `uv.lock`
+
+---
+
+## 4. Adicionar uma nova dependência
+
+Para instalar um pacote:
+
+```bash
+uv add nome-do-pacote
+```
+
+Exemplo:
+
+```bash
+uv add django-filter
+```
+
+O `pyproject.toml` e `uv.lock` serão atualizados automaticamente.
+
+---
+
+## 5. Atualizar dependências
+
+Para atualizar dependências:
+
+```bash
+uv lock --upgrade
+uv sync
 ```
 
 ---
 
-## 6. Rodar o servidor
+# ▶️ Executando o Projeto
+
+Após instalar as dependências, ainda dentro da pasta `back-end`:
+
+## 1. Aplicar migrations
 
 ```bash
-python manage.py runserver
+uv run python manage.py migrate
+```
+
+---
+
+## 2. Criar superusuário
+
+```bash
+uv run python manage.py createsuperuser
+```
+
+---
+
+## 3. Rodar o servidor
+
+```bash
+uv run python manage.py runserver
 ```
 
 Servidor disponível em:
@@ -120,55 +171,25 @@ http://127.0.0.1:8000
 
 ---
 
-# 🗂️ Componentes Importantes
+# 🗂️ Comandos Úteis
 
-### `manage.py`
-
-Ferramenta CLI principal do Django para executar comandos administrativos.
-
-Exemplos:
+Criar migrations:
 
 ```bash
-python manage.py runserver
-python manage.py migrate
-python manage.py makemigrations
-python manage.py createsuperuser
+uv run python manage.py makemigrations
 ```
 
----
+Aplicar migrations:
 
-### `settings.py`
-
-Contém todas as configurações do projeto:
-
-* Apps instaladas
-* Banco de dados
-* Middleware
-* Configuração de segurança
-* Configuração de templates
-
----
-
-### `urls.py`
-
-Define o roteamento principal da aplicação.
-
-Exemplo:
-
-```python
-urlpatterns = [
-    path('admin/', admin.site.urls),
-]
+```bash
+uv run python manage.py migrate
 ```
 
----
+Abrir shell do Django:
 
-### `asgi.py` / `wsgi.py`
-
-Arquivos de entrada para servidores de aplicação:
-
-* **WSGI** → servidores tradicionais (gunicorn, uWSGI)
-* **ASGI** → aplicações assíncronas (Daphne, Uvicorn)
+```bash
+uv run python manage.py shell
+```
 
 ---
 
@@ -182,7 +203,7 @@ Arquivo:
 db.sqlite3
 ```
 
-Para produção recomenda-se:
+Para produção recomenda-se utilizar:
 
 * PostgreSQL
 * MySQL
@@ -191,10 +212,10 @@ Para produção recomenda-se:
 
 # 🛠️ Desenvolvimento
 
-Criar nova aplicação Django:
+Criar uma nova aplicação Django:
 
 ```bash
-python manage.py startapp nome_da_app
+uv run python manage.py startapp nome_da_app
 ```
 
 Registrar no `settings.py`:
@@ -210,4 +231,4 @@ INSTALLED_APPS = [
 
 # 📄 Licença
 
-Este projeto é destinado para fins educacionais e de desenvolvimento interno.
+Este projeto é destinado para fins educacionais e desenvolvimento acadêmico.
