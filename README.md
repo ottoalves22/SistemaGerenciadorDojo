@@ -1,4 +1,4 @@
-# Sistema Gerenciador Dojo
+# Sistema Gerenciador Dojo - P.I Grupo 15 - Univesp 2026
 
 Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de artes marciais. O projeto utiliza a estrutura padrão do Django para configuração do backend e gerenciamento da aplicação.
 
