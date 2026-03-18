@@ -1,7 +1,9 @@
 from django.test import TestCase
 from django.utils import timezone
+from django.core.exceptions import ValidationError
 from .models import Modalidade, Aluno, Faixa, Matricula
 import datetime
+from django.db import IntegrityError
 
 class ModalidadeModelTest(TestCase):
     @classmethod
@@ -28,7 +30,7 @@ class FaixaModelTest(TestCase):
         cls.faixa = Faixa.objects.create(
             nome="Branca",
             modalidade=modalidade,
-            ordem=1
+            cor_faixa="Branca"
         )
 
     def test_nome_label(self):
@@ -53,7 +55,7 @@ class AlunoModelTest(TestCase):
 
     def test_nome_label(self):
         field_label = self.aluno._meta.get_field("nome").verbose_name
-        self.assertEqual(field_label, "Nome")
+        self.assertEqual(field_label, "Nome do aluno")
 
     def test_object_name_is_nome(self):
         self.assertEqual(str(self.aluno), self.aluno.nome)
@@ -63,7 +65,7 @@ class MatriculaModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         modalidade = Modalidade.objects.create(nome="Jiu-Jitsu")
-        faixa = Faixa.objects.create(nome="Branca", modalidade=modalidade, ordem=1)
+        faixa = Faixa.objects.create(nome="Branca", modalidade=modalidade, cor_faixa="Branca")
         aluno = Aluno.objects.create(
             nome="Cabelinho",
             data_nascimento=datetime.date(1995, 5, 20),
@@ -81,11 +83,21 @@ class MatriculaModelTest(TestCase):
         self.assertEqual(str(self.matricula), expected_name)
 
     def test_unique_matricula(self):
-        # Tentativa de criar matrícula duplicada deve falhar
-        from django.db import IntegrityError
-        with self.assertRaises(IntegrityError):
+        # Tentativa de criar matrícula duplicada deve falhar com ValidationError
+        with self.assertRaises(ValidationError):
             Matricula.objects.create(
                 aluno=self.matricula.aluno,
                 modalidade=self.matricula.modalidade,
                 data_ingresso=datetime.date(2026, 1, 2)
+            )
+
+    def test_faixa_pertence_ao_mesmo_da_modalidade(self):
+        modalidade_errada = Modalidade.objects.create(nome="Krav Maga")
+        faixa_errada = Faixa.objects.create(nome="Amarela", modalidade=modalidade_errada, cor_faixa="Amarela")
+        with self.assertRaises(ValidationError):
+            Matricula.objects.create(
+                aluno=self.matricula.aluno,
+                modalidade=self.matricula.modalidade,
+                faixa_atual=faixa_errada,
+                data_ingresso=datetime.date(2026, 1, 1)
             )

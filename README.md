@@ -258,6 +258,30 @@ uv run python manage.py migrate
 
 ---
 
+# 🧪 Executando os Testes
+
+Para garantir a integridade do sistema, você pode executar a suíte de testes automatizados. 
+
+Dentro da pasta `back-end/sistemaGerenciadorDojo`, execute:
+
+```bash
+python manage.py test alunos
+```
+
+Ou, caso prefira usar o `uv`:
+
+```bash
+uv run python manage.py test alunos
+```
+
+### O que é testado?
+* **Modelos**: Validação de rótulos (labels), comprimentos máximos e nomes de exibição (`__str__`).
+* **Regras de Negócio**: 
+    * Unicidade de matrículas (um aluno não pode ter duas matrículas na mesma modalidade).
+    * Consistência de faixas (um aluno só pode ser matriculado em uma faixa que pertença à modalidade escolhida).
+
+---
+
 # 🛠️ Desenvolvimento
 
 Criar uma nova aplicação Django:

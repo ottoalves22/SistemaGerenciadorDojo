@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 
 class Modalidade(models.Model):
@@ -14,6 +15,7 @@ class Modalidade(models.Model):
 class Faixa(models.Model):
     nome = models.CharField(max_length=50, verbose_name=_("Nome da Faixa"))
     modalidade = models.ForeignKey(Modalidade, on_delete=models.CASCADE, related_name='faixas', verbose_name=_("Modalidade"))
+    cor_faixa = models.CharField(max_length=50, verbose_name=_("Cor da Faixa"), default="Branca")
 
     def __str__(self):
         return f"{self.nome} ({self.modalidade.nome})"
@@ -47,3 +49,11 @@ class Matricula(models.Model):
     class Meta:
         db_table = 'matriculas'
         unique_together = ('aluno', 'modalidade')
+
+    def clean(self):
+        if self.faixa_atual and self.faixa_atual.modalidade != self.modalidade:
+            raise ValidationError(_("A faixa selecionada não pertence à modalidade desta matrícula."))
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
