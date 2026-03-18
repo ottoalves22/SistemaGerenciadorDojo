@@ -196,18 +196,65 @@ uv run python manage.py shell
 
 # 🧪 Banco de Dados
 
-O projeto utiliza **SQLite** por padrão.
+O projeto utiliza **PostgreSQL** como banco de dados principal, gerenciado via **Docker Compose** para facilitar o ambiente de desenvolvimento.
 
-Arquivo:
+Para rodar o banco de dados, você precisará do Docker e do Docker Compose instalados.
 
+### Instalação
+
+1. **Instalar Docker e Docker Compose V2**:
+   Usar a documentação oficial do Docker para instalar o Docker e o Docker Compose V2.
+   [text](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+
+2. **Verificar instalação**:
+   ```bash
+   docker --version
+   docker compose version
+   ```
+
+---
+
+## 🚀 Rodando o PostgreSQL
+
+Toda a configuração do banco de dados está no arquivo `back-end/docker-compose.yml`.
+
+### 1. Subir o container
+
+Dentro da pasta `back-end`, execute:
+
+```bash
+docker-compose up -d
 ```
-db.sqlite3
+
+O container será baixado e executado em segundo plano.
+
+### 2. Credenciais de Acesso
+
+As credenciais configuradas no `docker-compose.yml` e `settings.py` são:
+
+* **DB Name**: `sgd_db`
+* **User**: `sgd_user`
+* **Password**: `sgd_password`
+* **Port**: `5432`
+
+### 3. Verificar se o banco está rodando
+
+```bash
+docker ps
 ```
 
-Para produção recomenda-se utilizar:
+Você deverá ver o container `sgd_postgres` na lista.
 
-* PostgreSQL
-* MySQL
+---
+
+### Migrations
+
+Após subir o banco pela primeira vez, não esqueça de aplicar as migrations:
+
+```bash
+cd back-end
+uv run python manage.py migrate
+```
 
 ---
 
