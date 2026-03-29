@@ -1,0 +1,566 @@
+/* CSS customizado para Academia */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap');
+
+
+/* =========================
+   BASE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #444;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    color: #c42a0f;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.menu-principal ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+}
+
+.menu-principal a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.menu-principal a:hover {
+    color: #c42a0f;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero-content h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #A0A0A0;
+}
+
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+
+.botao {
+    display: inline-block;
+    padding: 15px 35px;
+    border: none;
+    background-color: #c42a0f;
+    color: #FFFFFF;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+
+.botao:hover {
+    background-color: #E65C00;
+}
+
+
+/* =========================
+   DIFERENCIAIS
+========================= */
+
+.diferenciais-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: center;
+    padding: 50px 0;
+    border-top: 1px solid #444;
+    border-bottom: 1px solid #444;
+}
+
+.diferencial-item img {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.diferencial-item h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+}
+
+
+/* =========================
+   TITULOS
+========================= */
+
+h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   MODALIDADES
+========================= */
+
+.modalidades-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.modalidade-card {
+    background-color: #2C2C2C;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #444;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modalidade-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modalidade-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.modalidade-card-content {
+    padding: 25px;
+}
+
+.modalidade-card h3 {
+    color: #c42a0f;
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+
+/* =========================
+   PLANOS
+========================= */
+
+.planos-section {
+    padding: 50px 0;
+}
+
+.planos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.plano-card {
+    background-color: #2C2C2C;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.plano-card:hover {
+    border-color: #c42a0f;
+}
+
+.plano-card.popular {
+    border: 2px solid #c42a0f;
+    transform: scale(1.05);
+}
+
+.tag-popular {
+    background-color: #c42a0f;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 700;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.plano-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+}
+
+.preco {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 15px 0;
+    color: #c42a0f;
+}
+
+.preco span {
+    font-size: 1rem;
+    color: #A0A0A0;
+}
+
+.plano-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plano-card ul li {
+    margin-bottom: 10px;
+}
+
+.plano-card ul li.disabled {
+    color: #A0A0A0;
+    text-decoration: line-through;
+}
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+.form-section {
+    background-color: #2C2C2C;
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 50px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c42a0f;
+}
+
+.mensagem-erro {
+    color: #c42a0f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+
+/* =========================
+   MENU HAMBURGUER
+========================= */
+
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+}
+
+.menu-lateral {
+    position: fixed;
+    left: -220px;
+    top: 0;
+    width: 220px;
+    height: 100%;
+    background: #2C2C2C;
+    padding-top: 80px;
+    transition: 0.3s;
+    z-index: 999;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-lateral li {
+    padding: 15px 20px;
+}
+
+.menu-lateral a {
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+
+/* =========================
+   TABELA
+========================= */
+
+.tabela-container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.tabela-sistema {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2C2C2C;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabela-sistema thead {
+    background: #1f1f1f;
+}
+
+.tabela-sistema th {
+    padding: 16px;
+    text-align: left;
+    color: #c42a0f;
+    font-size: 0.9rem;
+}
+
+.tabela-sistema td {
+    padding: 14px 16px;
+    border-top: 1px solid #444;
+}
+
+.tabela-sistema tr:hover {
+    background: #333;
+}
+
+
+/* =========================
+   BOTÕES CRUD
+========================= */
+
+.btn-editar {
+    background: #444;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.btn-editar:hover {
+    background: #c42a0f;
+}
+
+.btn-excluir {
+    background: #c42a0f;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background: #666;
+}
+
+.barra-filtros {
+
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+
+}
+
+.barra-filtros input {
+
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2C2C2C;
+    color: white;
+
+}
+
+.barra-filtros select {
+
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2C2C2C;
+    color: white;
+
+}
+
+/* =========================
+   BOTÃO NOVO REGISTRO
+========================= */
+
+.topo-acoes {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.btn-novo {
+    background: #c42a0f;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.btn-novo:hover {
+    background: #a8210c;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width:768px) {
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .tabela-sistema thead {
+        display: none;
+    }
+
+    .tabela-sistema,
+    .tabela-sistema tbody,
+    .tabela-sistema tr,
+    .tabela-sistema td {
+        display: block;
+        width: 100%;
+        background: transparent;
+    }
+
+    .tabela-sistema tr {
+        margin-bottom: 20px;
+        background: #2C2C2C;
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .tabela-sistema td {
+        border: none;
+        padding: 8px 0;
+    }
+
+    .tabela-sistema td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #c42a0f;
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .topo-acoes {
+        justify-content: center;
+    }
+
+    .btn-novo {
+        width: 100%;
+        text-align: center;
+    }
+
+}
