@@ -19,7 +19,6 @@ Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de
 │       ├── urls.py            
 │       └── wsgi.py            
 │
-├── db.sqlite3                 
 ├── manage.py                  
 │
 ├── main.py                    
@@ -38,7 +37,7 @@ Sistema web desenvolvido em **Django** para gerenciamento de um dojo/academia de
 
 * **Python**
 * **Django**
-* **SQLite**
+* **PostgreSQL**
 * **uv** para gerenciamento de dependências
 
 ---
@@ -143,9 +142,10 @@ Após instalar as dependências, ainda dentro da pasta `back-end`:
 
 ## 1. Aplicar migrations
 
+(No caso do Docker: adicionar 'docker compose exec web' + comando abaixo)
 ```bash
- uv run python manage.py makemigrations {table_name}
-uv run python manage.py migrate
+docker compose exec web uv run python manage.py makemigrations {table_name}
+docker compose exec web uv run python manage.py migrate
 ```
 
 ---
@@ -154,6 +154,8 @@ uv run python manage.py migrate
 
 ```bash
 uv run python manage.py createsuperuser
+(No caso do Docker:)
+docker compose exec web uv run python3 manage.py createsuperuser
 ```
 
 ---

@@ -79,8 +79,8 @@ DATABASES = {
         "NAME": "sgd_db",
         "USER": "sgd_user",
         "PASSWORD": "sgd_password",
-        "HOST": "localhost",
-        "PORT": "5432"
+        "HOST": "db",  # <-- important
+        "PORT": "5432",
     }
 }
 
