@@ -1,0 +1,17 @@
+{% extends "admin/change_list.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<h1 class="titulo-secao">
+Lista de {{ cl.opts.verbose_name_plural }}
+</h1>
+
+<div class="tabela-container">
+    {{ block.super }}
+</div>
+
+</div>
+
+{% endblock %}
