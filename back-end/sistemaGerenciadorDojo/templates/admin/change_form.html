@@ -4,30 +4,30 @@
 
 <div class="container">
 
-<h1 class="titulo-secao">
+    <h1 class="titulo-secao">
 
-{% if add %}
-Cadastrar Aluno
-{% else %}
-Editar Aluno
-{% endif %}
+        {% if add %}
+        Cadastrar Aluno
+        {% else %}
+        Editar Aluno
+        {% endif %}
 
-</h1>
+    </h1>
 
-<form method="post">
-{% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
 
-<div class="form-section">
+        <div class="form-section">
 
-{{ adminform.form.as_p }}
+            {{ adminform.form.as_p }}
 
-<button class="botao" type="submit">
-Salvar
-</button>
+            <button class="botao" type="submit">
+                Salvar
+            </button>
 
-</div>
+        </div>
 
-</form>
+    </form>
 
 </div>
 

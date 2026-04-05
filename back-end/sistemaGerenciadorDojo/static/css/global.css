@@ -3,6 +3,70 @@
 
 
 /* =========================
+AJUSTES DJANGO ADMIN
+========================= */
+
+/* Remove fundo branco e espaçamentos do admin */
+#content {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 20px;
+
+}
+
+/* Remove breadcrumb (Home > ...) */
+.breadcrumbs {
+    display: none;
+}
+
+/* Remove caixas padrão do Django */
+.module {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* REMOVE FUNDO AZUL DO DJANGO ADMIN */
+#header {
+    background: transparent !important;
+}
+
+#branding {
+    background: transparent !important;
+}
+
+#user-tools {
+    background: transparent !important;
+    color: white !important;
+}
+
+/* REMOVE BARRA AZUL SUPERIOR */
+div.breadcrumbs {
+    background: transparent !important;
+    border: none !important;
+    color: #aaa;
+}
+
+/* LINKS DO TOPO */
+#user-tools a {
+    color: #c42a0f !important;
+}
+
+#user-tools a:hover {
+    color: #E65C00 !important;
+}
+
+/* REMOVE FUNDO GLOBAL QUE O DJANGO INJETA */
+body.dashboard #content {
+    background: transparent !important;
+}
+
+#header, #branding, #user-tools {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* =========================
    BASE
 ========================= */
 
@@ -20,6 +84,10 @@ body {
     background-color: #1A1A1A;
     color: #FFFFFF;
     line-height: 1.6;
+}
+
+.container h1+h1 {
+    display: none;
 }
 
 
@@ -143,33 +211,10 @@ body {
 .botao:hover {
     background-color: #E65C00;
 }
-
-
-/* =========================
-   DIFERENCIAIS
-========================= */
-
-.diferenciais-section {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    text-align: center;
-    padding: 50px 0;
-    border-top: 1px solid #444;
-    border-bottom: 1px solid #444;
+a {
+    text-decoration: none !important;
+    color: white !important;
 }
-
-.diferencial-item img {
-    border-radius: 50%;
-    margin-bottom: 15px;
-}
-
-.diferencial-item h3 {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.5rem;
-}
-
-
 /* =========================
    TITULOS
 ========================= */
@@ -217,12 +262,30 @@ h2 {
     padding: 25px;
 }
 
+.modalidade-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modalidade-card p {
+    margin-bottom: 20px;
+    color: #A0A0A0;
+}
+
 .modalidade-card h3 {
     color: #c42a0f;
     margin-top: 0;
     font-weight: 700;
     font-size: 1.4rem;
 }
+
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
 
 
 /* =========================
@@ -522,6 +585,21 @@ h2 {
    RESPONSIVO
 ========================= */
 
+/* Tablet */
+@media (min-width: 600px) {
+    .modalidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+    .modalidades-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Mobile */
 @media (max-width:768px) {
 
     .container {

@@ -5,83 +5,17 @@
 
 {% block extrastyle %}
 {{ block.super }}
+
 <link rel="stylesheet" href="{% static 'css/global.css' %}">
 
-<style>
 
-/* adapt django admin to your theme */
-
-body {
-    background-color: #1A1A1A;
-    color: #FFFFFF;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* remove default admin header */
-#header {
-    display: none;
-}
-
-/* remove sidebar */
-#nav-sidebar {
-    display: none;
-}
-
-/* content spacing */
-#content {
-    padding: 0;
-}
-
-/* admin modules become cards */
-.module {
-    background-color: #2C2C2C;
-    border: 1px solid #444;
-    border-radius: 12px;
-    padding: 20px;
-}
-
-/* module titles */
-.module h2 {
-    font-family: 'Anton', sans-serif;
-    color: #c42a0f;
-}
-
-/* links */
-a {
-    color: #c42a0f;
-}
-
-a:hover {
-    color: #E65C00;
-}
-
-/* make logout button look like menu link */
-
-.menu-principal form {
-    display: inline;
-}
-
-.menu-principal button {
-    background: none;
-    border: none;
-    color: #c42a0f;
-    font: inherit;
-    cursor: pointer;
-}
-
-.menu-principal button:hover {
-    color: #E65C00;
-}
-
-</style>
 {% endblock %}
-
-
 
 {% block branding %}
 
 <header class="site-header">
     <div class="header-container">
+
 
         <h1 class="logo">
             Ornellas Dojo
@@ -113,11 +47,11 @@ a:hover {
         {% endif %}
 
     </div>
+
+
 </header>
 
 {% endblock %}
-
-
 
 {% block content %}
 
