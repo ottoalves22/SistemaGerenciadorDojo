@@ -1,7 +1,10 @@
-# Create your views here.
-from django.http import HttpResponse
 from django.shortcuts import render
-
+from .models import Aluno, Modalidade  # ajuste conforme seus models
 
 def index(request):
-    return render(request, "alunos/alunos.html")
+    alunos = Aluno.objects.all()
+    modalidades = Modalidade.objects.all()
+    return render(request, "alunos/alunos.html", {
+        "alunos": alunos,
+        "modalidades": modalidades,
+    })

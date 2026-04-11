@@ -1,17 +1,72 @@
 {% extends "admin/change_list.html" %}
+{% load static %}
 
 {% block content %}
-
-<div class="container">
-
-<h1 class="titulo-secao">
-Lista de {{ cl.opts.verbose_name_plural }}
-</h1>
-
-<div class="tabela-container">
-    {{ block.super }}
+<div style="margin-bottom: 16px;">
+    <a href="javascript:history.back()" 
+       style="color:#A0A0A0;font-size:0.9rem;text-decoration:none;">
+        Voltar
+    </a>
 </div>
+<main class="container">
+    <h2
+        style="font-family:'Anton',sans-serif;font-size:3rem;text-align:center;text-transform:uppercase;margin-bottom:30px">
+        Alunos
+    </h2>
+    <div class="topo-acoes">
+        <a href="{% url 'admin:alunos_aluno_add' %}" class="btn-novo">+ Novo</a>
+    </div>
 
-</div>
+    <div class="barra-filtros">
+        <input type="text" id="pesquisa-aluno" placeholder="Pesquisar aluno ou modalidade...">
+        <select id="filtro-modalidade">
+            <option value="">Todas modalidades</option>
+           
 
+        </select>
+    </div>
+
+    <div class="tabela-container">
+        <table class="tabela-sistema">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Modalidade</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="lista-alunos">
+                {% for result in cl.result_list %}
+                <tr>
+                    <td data-label="Nome">{{ result.nome }}</td>
+                    <td data-label="Modalidade">
+                        {% for matricula in result.matriculas.all %}
+                        {{ matricula.modalidade.nome }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}—{% endfor %}
+                    </td>
+                    <td data-label="Status">
+                        {% if result.is_active %}
+                        <span style="color:#43a047">Ativo</span>
+                        {% else %}
+                        <span style="color:#c42a0f">Inativo</span>
+                        {% endif %}
+                    </td>
+                    <td data-label="Ações">
+                        <a href="{% url 'admin:alunos_aluno_change' result.pk %}" class="btn-editar">Editar</a>
+                        <a href="{% url 'admin:alunos_aluno_delete' result.pk %}" class="btn-excluir">Excluir</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" style="text-align:center;color:#A0A0A0;padding:30px">
+                        Nenhum aluno cadastrado.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</main>
 {% endblock %}
