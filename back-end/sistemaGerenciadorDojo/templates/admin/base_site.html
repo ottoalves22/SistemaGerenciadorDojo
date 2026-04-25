@@ -5,58 +5,62 @@
 
 {% block extrastyle %}
 {{ block.super }}
-
 <link rel="stylesheet" href="{% static 'css/global.css' %}">
-
-
 {% endblock %}
 
 {% block branding %}
-
 <header class="site-header">
     <div class="header-container">
-
-
-        <h1 class="logo">
-            Ornellas Dojo
-        </h1>
+        <button id="btn-menu" class="btn-menu">☰</button>
+        <h1 class="logo">Ornellas Dojo</h1>
 
         {% if user.is_authenticated %}
         <nav class="menu-principal">
             <ul>
-
-                <li>
-                    <a href="/admin/">Admin</a>
-                </li>
-
-                <li>
-                    <a href="/">Site</a>
-                </li>
-
+                <li><a href="/admin/">Admin</a></li>
+                <li><a href="/">Site</a></li>
                 <li>
                     <form method="post" action="{% url 'admin:logout' %}">
                         {% csrf_token %}
-                        <button type="submit">
-                            Sair
-                        </button>
+                        <button type="submit">Sair</button>
                     </form>
                 </li>
-
             </ul>
         </nav>
         {% endif %}
-
     </div>
-
-
 </header>
 
+<nav id="menu-lateral" class="menu-lateral">
+    <ul>
+        <li><a href="/admin/">Dashboard</a></li>
+        <li><a href="/admin/alunos/aluno/">Alunos</a></li>
+        <li><a href="/admin/alunos/modalidade/">Modalidades</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{% block usertools %}
+<div class="user-menu">
+    <select onchange="if(this.value) window.location.href=this.value">
+        <option value="">{{ user.username }} ▾ </option>
+        <option value="/">Ver site</option>
+        <option value="{% url 'admin:password_change' %}">Alterar senha</option>
+    </select>
+
+    <form method="post" action="{% url 'admin:logout' %}" style="display:inline">
+        {% csrf_token %}
+        <button type="submit" class="btn-logout">Sair</button>
+    </form>
+</div>
 {% endblock %}
 
 {% block content %}
-
 <div class="container">
     {{ block.super }}
 </div>
+{% endblock %}
 
+{% block footer %}
+<script src="{% static 'js/app.js' %}"></script>
 {% endblock %}

@@ -1,74 +1,328 @@
-/* CSS customizado para Academia */
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap');
 
 
-/* =========================
-AJUSTES DJANGO ADMIN
-========================= */
+/* =================================================
+   DJANGO ADMIN — TEMA PERSONALIZADO
+   ================================================= */
 
-/* Remove fundo branco e espaçamentos do admin */
-#content {
-    background: transparent !important;
+
+/* -------------------------------------------------
+   1. FONTE GLOBAL
+   ------------------------------------------------- */
+
+body,
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* -------------------------------------------------
+   2. LINKS
+   ------------------------------------------------- */
+
+a {
+    color: #c42a0f !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #E65C00 !important;
+}
+
+.menu-principal a,
+.menu-lateral a {
+    color: #FFFFFF !important;
+}
+
+.menu-principal a:hover {
+    color: #c42a0f !important;
+}
+
+
+/* -------------------------------------------------
+   3. CABEÇALHO
+   ------------------------------------------------- */
+
+/* Remove estilos nativos do Django Admin no header */
+#header {
     padding: 0 !important;
-    margin: 20px;
-
-}
-
-/* Remove breadcrumb (Home > ...) */
-.breadcrumbs {
-    display: none;
-}
-
-/* Remove caixas padrão do Django */
-.module {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-}
-
-/* REMOVE FUNDO AZUL DO DJANGO ADMIN */
-#header {
-    background: transparent !important;
 }
 
 #branding {
     background: transparent !important;
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
 }
 
 #user-tools {
-    background: transparent !important;
-    color: white !important;
+    display: none !important;
 }
 
-/* REMOVE BARRA AZUL SUPERIOR */
+
+/* -------------------------------------------------
+   4. BREADCRUMB
+   ------------------------------------------------- */
+
+.breadcrumbs,
 div.breadcrumbs {
-    background: transparent !important;
-    border: none !important;
-    color: #aaa;
+    display: none;
 }
 
-/* LINKS DO TOPO */
-#user-tools a {
-    color: #c42a0f !important;
-}
 
-#user-tools a:hover {
-    color: #E65C00 !important;
-}
+/* -------------------------------------------------
+   5. CONTEÚDO PRINCIPAL
+   ------------------------------------------------- */
 
-/* REMOVE FUNDO GLOBAL QUE O DJANGO INJETA */
+#content,
 body.dashboard #content {
     background: transparent !important;
+    padding: 0 !important;
+    margin: 20px;
 }
 
-#header, #branding, #user-tools {
-    border: none !important;
+#content h1 {
+    display: none !important;
+}
+
+.module {
+    background: #2C2C2C !important;
+    border: 1px solid #444 !important;
     box-shadow: none !important;
 }
 
-/* =========================
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: #c42a0f !important;
+    color: white !important;
+    font-size: 0.8125rem;
+}
+
+
+/* -------------------------------------------------
+   6. TÍTULOS
+   ------------------------------------------------- */
+
+h1, h2, h3 {
+    color: white !important;
+}
+
+h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+
+/* -------------------------------------------------
+   7. TABELAS
+   ------------------------------------------------- */
+
+table {
+    background: #2C2C2C !important;
+    color: white !important;
+}
+
+thead {
+    background: #1f1f1f !important;
+}
+
+th {
+    color: #c42a0f !important;
+}
+
+
+/* -------------------------------------------------
+   8. INPUTS / SELECTS / TEXTAREAS
+   ------------------------------------------------- */
+
+input,
+select,
+textarea {
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+
+/* -------------------------------------------------
+   9. BOTÕES GERAIS (Django Admin)
+   ------------------------------------------------- */
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input {
+    background: #c42a0f !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+    background: #E65C00 !important;
+}
+
+.toggle-nav-sidebar {
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   10. BOTÃO "+ ADD" (Django Admin)
+   ------------------------------------------------- */
+
+.addlink {
+    background: #2e7d32 !important;
+    color: white !important;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-left: 10px;
+    text-decoration: none !important;
+}
+
+.addlink::before {
+    content: "+" !important;
+    margin-right: 4px;
+}
+
+.addlink:hover {
+    background: #43a047 !important;
+    color: white !important;
+}
+
+#nav-sidebar .addlink {
+    background: transparent !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    border-radius: 0;
+}
+
+#nav-sidebar .addlink:hover {
+    background: transparent !important;
+    color: #43a047 !important;
+}
+
+
+/* -------------------------------------------------
+   11. SIDEBAR (#nav-sidebar)
+   ------------------------------------------------- */
+
+#nav-sidebar {
+    background-color: #2C2C2C !important;
+    border-right: 1px solid #444;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    width: 240px;
+    padding-top: 20px;
+}
+
+#nav-sidebar .module h2 {
+    background: #1f1f1f !important;
+    color: #c42a0f !important;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    margin: 0;
+    border-bottom: 1px solid #444;
+}
+
+#nav-sidebar .module ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#nav-sidebar .module li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+}
+
+#nav-sidebar a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+}
+
+#nav-sidebar a:hover {
+    background: #c42a0f;
+    color: white !important;
+    border-radius: 6px;
+    padding-left: 10px;
+}
+
+#nav-sidebar .current-app > a,
+#nav-sidebar .current-model > a {
+    background: #c42a0f !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+#nav-sidebar input {
+    width: 90%;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #1A1A1A;
+    color: white;
+}
+
+#nav-sidebar table,
+#nav-sidebar thead,
+#nav-sidebar tbody,
+#nav-sidebar tr,
+#nav-sidebar td,
+#nav-sidebar th {
+    background: transparent !important;
+    border: none !important;
+}
+
+#nav-sidebar tr:hover,
+#nav-sidebar tr:hover td,
+#nav-sidebar tr:hover th {
+    background: transparent !important;
+}
+
+#nav-sidebar th[scope="row"] {
+    background: transparent !important;
+}
+
+#nav-sidebar th[scope="row"] a:hover {
+    background: #c42a0f !important;
+    color: white !important;
+    border-radius: 6px;
+    padding-left: 10px;
+    display: block;
+}
+
+
+/* =================================================
+   SITE PRINCIPAL
+   ================================================= */
+
+
+/* -------------------------------------------------
    BASE
-========================= */
+   ------------------------------------------------- */
 
 * {
     box-sizing: border-box;
@@ -86,18 +340,19 @@ body {
     line-height: 1.6;
 }
 
-.container h1+h1 {
+.container h1 + h1 {
     display: none;
 }
 
 
-/* =========================
+/* -------------------------------------------------
    HEADER
-========================= */
+   ------------------------------------------------- */
 
 .site-header {
     background-color: rgba(26, 26, 26, 0.85);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
@@ -116,27 +371,30 @@ body {
 .logo {
     font-family: 'Anton', sans-serif;
     font-size: 2.2rem;
-    color: #c42a0f;
+    color: white !important;
     margin: 0;
     letter-spacing: 1px;
+    text-decoration: none !important;
 }
 
+/* Menu principal — desktop */
 .menu-principal ul {
-    list-style: none;
+    list-style: none !important;
     display: flex;
     gap: 2rem;
+    padding: 0;
     margin: 0;
 }
 
 .menu-principal a {
     text-decoration: none;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     font-weight: 700;
     transition: color 0.3s ease;
 }
 
 .menu-principal a:hover {
-    color: #c42a0f;
+    color: #c42a0f !important;
 }
 
 .menu-principal form {
@@ -151,10 +409,62 @@ body {
     cursor: pointer;
 }
 
+/* Menu do usuário (dropdown + sair) */
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #A0A0A0;
+    font-size: 0.85rem;
+    font-family: 'Poppins', sans-serif;
+}
 
-/* =========================
+.user-menu select {
+    background: transparent !important;
+    border: none !important;
+    color: white !important;
+    padding: 4px 2px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    appearance: none;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.user-menu select option {
+    background: #2C2C2C !important;
+    color: white !important;
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid #c42a0f;
+    color: #c42a0f !important;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    transition: 0.3s;
+    text-decoration: none !important;
+}
+
+.btn-logout:hover {
+    background: #c42a0f !important;
+    color: white !important;
+}
+
+/* Hambúrguer — apenas mobile */
+.btn-menu {
+    display: none;
+}
+
+
+/* -------------------------------------------------
    CONTAINER
-========================= */
+   ------------------------------------------------- */
 
 .container {
     max-width: 1100px;
@@ -163,9 +473,9 @@ body {
 }
 
 
-/* =========================
+/* -------------------------------------------------
    HERO
-========================= */
+   ------------------------------------------------- */
 
 .hero-section {
     text-align: center;
@@ -188,49 +498,35 @@ body {
 }
 
 
-/* =========================
-   BOTÃO PRINCIPAL
-========================= */
+/* -------------------------------------------------
+   BOTÃO PRINCIPAL (.botao)
+   ------------------------------------------------- */
 
 .botao {
     display: inline-block;
     padding: 15px 35px;
     border: none;
     background-color: #c42a0f;
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: background-color 0.3s ease;
-    text-decoration: none;
+    text-decoration: none !important;
     margin-bottom: 25px;
 }
 
 .botao:hover {
-    background-color: #E65C00;
-}
-a {
-    text-decoration: none !important;
-    color: white !important;
-}
-/* =========================
-   TITULOS
-========================= */
-
-h2 {
-    font-family: 'Anton', sans-serif;
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 40px;
-    text-transform: uppercase;
+    background-color: #E65C00 !important;
+    color: #FFFFFF !important;
 }
 
 
-/* =========================
+/* -------------------------------------------------
    MODALIDADES
-========================= */
+   ------------------------------------------------- */
 
 .modalidades-container {
     display: grid;
@@ -287,10 +583,9 @@ h2 {
 }
 
 
-
-/* =========================
+/* -------------------------------------------------
    PLANOS
-========================= */
+   ------------------------------------------------- */
 
 .planos-section {
     padding: 50px 0;
@@ -366,15 +661,14 @@ h2 {
 }
 
 
-/* =========================
-   FORMULARIO
-========================= */
+/* -------------------------------------------------
+   FORMULÁRIO
+   ------------------------------------------------- */
 
 .form-section {
     background-color: #2C2C2C;
     padding: 40px;
     border-radius: 12px;
-    margin-top: 50px;
     max-width: 500px;
     margin: 0 auto;
 }
@@ -410,17 +704,9 @@ h2 {
 }
 
 
-/* =========================
-   MENU HAMBURGUER
-========================= */
-
-.btn-menu {
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: white;
-    cursor: pointer;
-}
+/* -------------------------------------------------
+   MENU HAMBÚRGUER (mobile)
+   ------------------------------------------------- */
 
 .menu-lateral {
     position: fixed;
@@ -444,7 +730,7 @@ h2 {
 }
 
 .menu-lateral a {
-    color: white;
+    color: white !important;
     text-decoration: none;
     font-weight: 700;
 }
@@ -454,9 +740,9 @@ h2 {
 }
 
 
-/* =========================
-   TABELA
-========================= */
+/* -------------------------------------------------
+   TABELA DO SISTEMA
+   ------------------------------------------------- */
 
 .tabela-container {
     max-width: 900px;
@@ -492,9 +778,9 @@ h2 {
 }
 
 
-/* =========================
+/* -------------------------------------------------
    BOTÕES CRUD
-========================= */
+   ------------------------------------------------- */
 
 .btn-editar {
     background: #444;
@@ -523,39 +809,44 @@ h2 {
     background: #666;
 }
 
-.barra-filtros {
+a.btn-editar,
+a.btn-editar:hover,
+a.btn-excluir,
+a.btn-excluir:hover {
+    color: white !important;
+    text-decoration: none !important;
+}
 
+.barra-filtros {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
     flex-wrap: wrap;
-
 }
 
 .barra-filtros input {
-
     flex: 1;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #444;
     background: #2C2C2C;
     color: white;
-
 }
 
 .barra-filtros select {
-
     padding: 10px;
     border-radius: 8px;
     border: 1px solid #444;
     background: #2C2C2C;
     color: white;
-
+    min-width: 180px;
+    white-space: nowrap;
 }
 
-/* =========================
+
+/* -------------------------------------------------
    BOTÃO NOVO REGISTRO
-========================= */
+   ------------------------------------------------- */
 
 .topo-acoes {
     display: flex;
@@ -581,29 +872,57 @@ h2 {
     transform: translateY(-2px);
 }
 
-/* =========================
-   RESPONSIVO
-========================= */
+.btn-novo,
+.btn-novo:hover,
+a.btn-novo,
+a.btn-novo:hover {
+    color: white !important;
+    text-decoration: none !important;
+}
 
-/* Tablet */
+
+/* -------------------------------------------------
+   RESPONSIVO
+   ------------------------------------------------- */
+
 @media (min-width: 600px) {
     .modalidades-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Desktop */
 @media (min-width: 992px) {
     .modalidades-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Mobile */
-@media (max-width:768px) {
+@media (max-width: 768px) {
 
     .container {
         padding: 20px 15px;
+    }
+
+    .btn-menu {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .menu-lateral {
+        display: none;
+    }
+
+    .menu-lateral.ativo {
+        display: block;
+        left: 0;
+    }
+
+    .menu-principal ul {
+        display: none;
     }
 
     .tabela-sistema thead {
@@ -652,22 +971,10 @@ h2 {
         width: 100%;
         text-align: center;
     }
-
 }
 
-#content {
-    background: transparent;
-}
-
-.module {
-    background: #2C2C2C;
-    border: 1px solid #444;
-}
-
-.module h2 {
-    color: white;
-}
-
-a {
-    color: #c42a0f;
+@media (min-width: 769px) {
+    .menu-lateral {
+        display: none !important;
+    }
 }
