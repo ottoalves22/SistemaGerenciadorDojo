@@ -1,18 +1,8 @@
 {% extends "admin/base_site.html" %}
-
+{% load admin_urls %}
 {% block content %}
 
 <div class="container">
-
-    <h1 class="titulo-secao">
-
-        {% if add %}
-        Cadastrar Aluno
-        {% else %}
-        Editar Aluno
-        {% endif %}
-
-    </h1>
 
     <form method="post">
         {% csrf_token %}
@@ -24,6 +14,12 @@
             <button class="botao" type="submit">
                 Salvar
             </button>
+
+            {% if original %}
+            <a href="{% url opts|admin_urlname:'delete' original.pk %}" class="botao" style="background:#444;">
+                Apagar
+            </a>
+            {% endif %}
 
         </div>
 

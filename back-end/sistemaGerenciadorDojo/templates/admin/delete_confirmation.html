@@ -1,0 +1,42 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="modalidade-card">
+
+        <h1 style="margin-top:0;">⚠️ Confirmar exclusão</h1>
+
+        <p>
+            Você tem certeza que deseja deletar:
+            <strong>"{{ object }}"</strong>?
+        </p>
+
+        <p class="text-muted">
+            Essa ação não pode ser desfeita.
+        </p>
+
+        <div style="margin-top:20px;">
+
+            <form method="post" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="post" value="yes">
+
+                <button type="submit" class="botao" style="background:#b91c1c;">
+                    🗑 Sim, apagar
+                </button>
+            </form>
+
+            <a href=".." class="botao" style="background:#333; margin-left:10px;">
+                Cancelar
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -10,8 +10,6 @@
             <thead>
                 <tr>
                     <th>Nome</th>
-                    <th>Faixa</th>
-                    <th>Modalidade</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -21,18 +19,6 @@
                 <tr>
                     <td data-label="Nome">
                         {{ obj }}
-                    </td>
-
-                    <td data-label="Faixa">
-                        {{ obj.faixa|default:"—" }}
-                    </td>
-
-                    <td data-label="Modalidade">
-                        {% if obj.modalidades.all %}
-                            {{ obj.modalidades.all|join:", " }}
-                        {% else %}
-                            —
-                        {% endif %}
                     </td>
 
                     <td data-label="Ações">
