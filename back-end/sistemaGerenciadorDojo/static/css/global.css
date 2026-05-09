@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap');
 
 
@@ -33,21 +32,19 @@ a:hover {
     color: #E65C00 !important;
 }
 
-.menu-principal a,
 .menu-lateral a {
     color: #FFFFFF !important;
 }
 
-.menu-principal a:hover {
-    color: #c42a0f !important;
+.menu-lateral a:hover {
+    color: #FFFFFF !important;
 }
 
 
 /* -------------------------------------------------
-   3. CABEÇALHO
+   3. CABEÇALHO DJANGO ADMIN (reset nativo)
    ------------------------------------------------- */
 
-/* Remove estilos nativos do Django Admin no header */
 #header {
     padding: 0 !important;
     background: transparent !important;
@@ -143,7 +140,7 @@ th {
 
 
 /* -------------------------------------------------
-   8. INPUTS / SELECTS / TEXTAREAS
+   8. INPUTS / SELECTS / TEXTAREAS (global)
    ------------------------------------------------- */
 
 input,
@@ -153,6 +150,7 @@ textarea {
     border: 1px solid #444 !important;
     color: white !important;
     border-radius: 6px;
+    height: 2.5rem;
 }
 
 
@@ -223,7 +221,7 @@ input[type=button]:hover {
 
 
 /* -------------------------------------------------
-   11. SIDEBAR (#nav-sidebar)
+   11. SIDEBAR DJANGO (#nav-sidebar)
    ------------------------------------------------- */
 
 #nav-sidebar {
@@ -364,7 +362,6 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -375,66 +372,146 @@ body {
     margin: 0;
     letter-spacing: 1px;
     text-decoration: none !important;
+    margin-left:20px;
 }
 
-/* Menu principal — desktop */
-.menu-principal ul {
-    list-style: none !important;
-    display: flex;
-    gap: 2rem;
+.logo:hover {
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   MENU HAMBÚRGUER — visível em todas as telas
+   ------------------------------------------------- */
+
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    display: block;        /* sempre visível */
+    line-height: 1;
+    padding: 0;
+}
+
+.btn-menu:hover {
+    color: #c42a0f;
+}
+
+
+/* -------------------------------------------------
+   MENU LATERAL (drawer)
+   ------------------------------------------------- */
+
+.menu-lateral {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    background: #1f1f1f;
+    padding-top: 70px;
+    transition: left 0.3s ease;
+    z-index: 1100;
+    border-right: 1px solid #333;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+.menu-lateral ul {
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.menu-principal a {
+.menu-lateral li {
+    border-bottom: 1px solid #333;
+}
+
+.menu-lateral a {
+    display: block;
+    padding: 16px 24px;
+    color: white !important;
     text-decoration: none;
-    color: #FFFFFF !important;
-    font-weight: 700;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, padding-left 0.2s;
 }
 
-.menu-principal a:hover {
-    color: #c42a0f !important;
+.menu-lateral a:hover {
+    background: #c42a0f;
+    padding-left: 32px;
+    color: white !important;
 }
 
-.menu-principal form {
-    display: inline;
-}
 
-.menu-principal button {
-    background: none;
-    border: none;
-    color: #c42a0f;
-    font: inherit;
-    cursor: pointer;
-}
+/* -------------------------------------------------
+   MENU DO USUÁRIO (dropdown + botão sair)
+   ------------------------------------------------- */
 
-/* Menu do usuário (dropdown + sair) */
 .user-menu {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #A0A0A0;
-    font-size: 0.85rem;
-    font-family: 'Poppins', sans-serif;
 }
 
-.user-menu select {
-    background: transparent !important;
-    border: none !important;
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-btn {
+    background: transparent;
+    border: 1px solid #444;
     color: white !important;
-    padding: 4px 2px;
+    padding: 5px 12px;
+    border-radius: 6px;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
-    appearance: none;
-    -webkit-appearance: none;
-    box-shadow: none !important;
-    outline: none;
+    transition: border-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
 }
 
-.user-menu select option {
-    background: #2C2C2C !important;
+.user-dropdown-btn:hover {
+    border-color: #c42a0f;
+    color: white !important;
+}
+
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: #2C2C2C;
+    border: 1px solid #444;
+    border-radius: 8px;
+    min-width: 160px;
+    z-index: 9999;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.user-dropdown-menu.aberto {
+    display: block;
+}
+
+.user-dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: white !important;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.user-dropdown-menu a:hover {
+    background: #c42a0f;
     color: white !important;
 }
 
@@ -448,17 +525,11 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     transition: 0.3s;
-    text-decoration: none !important;
 }
 
 .btn-logout:hover {
     background: #c42a0f !important;
     color: white !important;
-}
-
-/* Hambúrguer — apenas mobile */
-.btn-menu {
-    display: none;
 }
 
 
@@ -534,6 +605,12 @@ body {
     gap: 30px;
 }
 
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
 .modalidade-card {
     background-color: #2C2C2C;
     border-radius: 12px;
@@ -574,12 +651,6 @@ body {
     margin-top: 0;
     font-weight: 700;
     font-size: 1.4rem;
-}
-
-.modalidades-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
 }
 
 
@@ -669,8 +740,56 @@ body {
     background-color: #2C2C2C;
     padding: 40px;
     border-radius: 12px;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
+}
+
+.form-section p {
+    margin-bottom: 16px;
+}
+
+.form-section label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+    outline: none;
+    border-color: #c42a0f;
+}
+
+.form-section input[type="date"] {
+    color-scheme: dark;
+}
+
+.form-section input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.form-section input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #c42a0f;
+    cursor: pointer;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 8px;
 }
 
 .form-group {
@@ -703,40 +822,43 @@ body {
     margin-top: 5px;
 }
 
+.form-admin-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-/* -------------------------------------------------
-   MENU HAMBÚRGUER (mobile)
-   ------------------------------------------------- */
-
-.menu-lateral {
-    position: fixed;
-    left: -220px;
-    top: 0;
-    width: 220px;
-    height: 100%;
+.form-admin-wrapper .form-row {
     background: #2C2C2C;
-    padding-top: 80px;
-    transition: 0.3s;
-    z-index: 999;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #444;
 }
 
-.menu-lateral ul {
-    list-style: none;
-    padding: 0;
-}
-
-.menu-lateral li {
-    padding: 15px 20px;
-}
-
-.menu-lateral a {
-    color: white !important;
-    text-decoration: none;
+.form-admin-wrapper label {
     font-weight: 700;
+    color: white;
+    display: block;
+    margin-bottom: 6px;
 }
 
-.menu-lateral.ativo {
-    left: 0;
+.form-admin-wrapper input,
+.form-admin-wrapper select,
+.form-admin-wrapper textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+}
+
+.form-admin-wrapper .submit-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center;
 }
 
 
@@ -762,7 +884,11 @@ body {
 }
 
 .tabela-sistema th {
-    padding: 16px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    border-bottom: 2px solid #c42a0f;
     text-align: left;
     color: #c42a0f;
     font-size: 0.9rem;
@@ -771,13 +897,30 @@ body {
 .tabela-sistema td {
     padding: 14px 16px;
     border-top: 1px solid #444;
+    font-size: 0.95rem;
 }
 
 .tabela-sistema tr:hover {
     background: #333;
 }
 
+/* Alinhamento vertical e destaque dos cabeçalhos */
+.tabela-sistema th,
+.tabela-sistema td {
+    vertical-align: middle;
+}
 
+
+
+/* Botões de ação menores e alinhados */
+.tabela-sistema .btn-editar,
+.tabela-sistema .btn-excluir {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
 /* -------------------------------------------------
    BOTÕES CRUD
    ------------------------------------------------- */
@@ -816,6 +959,11 @@ a.btn-excluir:hover {
     color: white !important;
     text-decoration: none !important;
 }
+
+
+/* -------------------------------------------------
+   FILTROS DA TABELA
+   ------------------------------------------------- */
 
 .barra-filtros {
     display: flex;
@@ -856,7 +1004,7 @@ a.btn-excluir:hover {
 
 .btn-novo {
     background: #c42a0f;
-    color: white;
+    color: white !important;
     border: none;
     padding: 12px 22px;
     border-radius: 8px;
@@ -865,25 +1013,19 @@ a.btn-excluir:hover {
     font-size: 0.9rem;
     letter-spacing: 1px;
     transition: 0.3s;
+    text-decoration: none !important;
 }
 
 .btn-novo:hover {
     background: #a8210c;
+    color: white !important;
     transform: translateY(-2px);
 }
 
-.btn-novo,
-.btn-novo:hover,
-a.btn-novo,
-a.btn-novo:hover {
-    color: white !important;
-    text-decoration: none !important;
-}
 
-
-/* -------------------------------------------------
+/* =================================================
    RESPONSIVO
-   ------------------------------------------------- */
+   ================================================= */
 
 @media (min-width: 600px) {
     .modalidades-grid {
@@ -901,28 +1043,6 @@ a.btn-novo:hover {
 
     .container {
         padding: 20px 15px;
-    }
-
-    .btn-menu {
-        display: block;
-        background: none;
-        border: none;
-        font-size: 28px;
-        color: white;
-        cursor: pointer;
-    }
-
-    .menu-lateral {
-        display: none;
-    }
-
-    .menu-lateral.ativo {
-        display: block;
-        left: 0;
-    }
-
-    .menu-principal ul {
-        display: none;
     }
 
     .tabela-sistema thead {
@@ -971,10 +1091,8 @@ a.btn-novo:hover {
         width: 100%;
         text-align: center;
     }
-}
 
-@media (min-width: 769px) {
-    .menu-lateral {
-        display: none !important;
+    .form-section {
+        padding: 24px 16px;
     }
 }

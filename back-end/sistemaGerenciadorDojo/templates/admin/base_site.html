@@ -12,40 +12,32 @@
 <header class="site-header">
     <div class="header-container">
         <button id="btn-menu" class="btn-menu">☰</button>
-        <h1 class="logo">Ornellas Dojo</h1>
-
-        {% if user.is_authenticated %}
-        <nav class="menu-principal">
-            <ul>
-                <li><a href="/admin/">Admin</a></li>
-                <li>
-                    <form method="post" action="{% url 'admin:logout' %}">
-                        {% csrf_token %}
-                        <button type="submit">Sair</button>
-                    </form>
-                </li>
-            </ul>
-        </nav>
-        {% endif %}
+        <a href="/admin/" class="logo">Ornellas Dojo</a>
     </div>
 </header>
 
 <nav id="menu-lateral" class="menu-lateral">
     <ul>
-        <li><a href="/admin/">Dashboard</a></li>
+        <li><a href="/admin/">Admin</a></li>
         <li><a href="/admin/alunos/aluno/">Alunos</a></li>
         <li><a href="/admin/alunos/modalidade/">Modalidades</a></li>
+        <li><a href="/admin/alunos/pagamento/">Pagamentos</a></li>
     </ul>
 </nav>
 {% endblock %}
 
 {% block usertools %}
 <div class="user-menu">
-    <select onchange="if(this.value) window.location.href=this.value">
-        <option value="">{{ user.username }} ▾ </option>
-        <option value="/">Ver site</option>
-        <option value="{% url 'admin:password_change' %}">Alterar senha</option>
-    </select>
+    <div class="user-dropdown">
+        <button class="user-dropdown-btn" id="btn-user-dropdown">
+            {{ user.username }} ▾
+        </button>
+        <div class="user-dropdown-menu" id="user-dropdown-menu">
+            <a href="/admin/">Admin</a>
+            <a href="/">Ver site</a>
+            <a href="{% url 'admin:password_change' %}">Alterar senha</a>
+        </div>
+    </div>
 
     <form method="post" action="{% url 'admin:logout' %}" style="display:inline">
         {% csrf_token %}
@@ -61,5 +53,6 @@
 {% endblock %}
 
 {% block footer %}
+{{ block.super }}
 <script src="{% static 'js/app.js' %}"></script>
 {% endblock %}

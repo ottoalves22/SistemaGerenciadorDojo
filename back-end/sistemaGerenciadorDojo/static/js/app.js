@@ -1,17 +1,50 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    // -----------------------------
+    // MENU HAMBÚRGUER
+    // -----------------------------
+
     const btnMenu = document.getElementById("btn-menu");
     const menu = document.getElementById("menu-lateral");
 
-    if (btnMenu) {
-        btnMenu.addEventListener("click", function () {
+    if (btnMenu && menu) {
+        btnMenu.addEventListener("click", function (e) {
+            e.stopPropagation();
             menu.classList.toggle("ativo");
+        });
+
+        // Fecha ao clicar fora
+        document.addEventListener("click", function (e) {
+            if (menu.classList.contains("ativo") &&
+                !menu.contains(e.target) &&
+                e.target !== btnMenu) {
+                menu.classList.remove("ativo");
+            }
         });
     }
 
 
     // -----------------------------
-    // LOGIN SIMULADO
+    // DROPDOWN DO USUÁRIO
+    // -----------------------------
+
+    const btnUserDropdown = document.getElementById("btn-user-dropdown");
+    const userDropdownMenu = document.getElementById("user-dropdown-menu");
+
+    if (btnUserDropdown && userDropdownMenu) {
+        btnUserDropdown.addEventListener("click", function (e) {
+            e.stopPropagation();
+            userDropdownMenu.classList.toggle("aberto");
+        });
+
+        document.addEventListener("click", function () {
+            userDropdownMenu.classList.remove("aberto");
+        });
+    }
+
+
+    // -----------------------------
+    // LOGIN
     // -----------------------------
 
     const formLogin = document.getElementById("form-login");
@@ -24,7 +57,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const email = document.getElementById("email").value;
             const senha = document.getElementById("senha").value;
-
             const erroEmail = document.getElementById("erro-email");
             const erroSenha = document.getElementById("erro-senha");
 
@@ -43,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             if (!valido) return;
 
-            // LOGIN SIMULADO
             if (email === "mestre@dojo.com" && senha === "1234") {
                 window.location.href = "dashboard.html";
             } else {
@@ -55,108 +86,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
     // -----------------------------
-    // LISTA DE ALUNOS
+    // FILTRO DA TABELA DE ALUNOS
     // -----------------------------
-
-    const lista = document.getElementById("lista-alunos");
-
-    if (lista) {
-
-        const nomes = [
-            "João Silva",
-            "Maria Souza",
-            "Pedro Santos"
-        ];
-
-        const modalidades = [
-            "Jiu Jitsu",
-            "Muay Thai",
-            "Boxe"
-        ];
-        
-        const status = [
-            "Ativo",
-            "Ativo",
-            "Inativo"
-        ];
-
-        const faixa = [
-            "Branca",
-            "Amarela",
-            "Azul"
-        ];
-
-        let html = "";
-
-        for (let i = 0; i < nomes.length; i++) {
-
-            html += `
-                <tr>
-
-                <td data-label="Nome">${nomes[i]}</td>
-
-                <td data-label="Modalidade">${modalidades[i]}</td>
-
-                <td data-label="Status">${status[i]}</td>
-
-                <td data-label="Status">${faixa[i]}</td>
-
-                <td data-label="Ações">
-
-                <button class="btn-editar">Editar</button>
-                <button class="btn-excluir">Excluir</button>
-
-                </td>
-
-                </tr>
-                `;
-
-        }
-
-        lista.innerHTML = html;
-
-    }
 
     const campoPesquisa = document.getElementById("pesquisa-aluno");
     const filtroModalidade = document.getElementById("filtro-modalidade");
 
-    function filtrarTabela() {
+    if (campoPesquisa && filtroModalidade) {
 
-        const texto = campoPesquisa.value.toLowerCase();
-        const modalidade = filtroModalidade.value.toLowerCase();
+        function filtrarTabela() {
 
-        const linhas = document.querySelectorAll("#lista-alunos tr");
+            const texto = campoPesquisa.value.toLowerCase();
+            const modalidade = filtroModalidade.value.toLowerCase();
+            const linhas = document.querySelectorAll("#lista-alunos tr");
 
-        linhas.forEach(function (linha) {
+            linhas.forEach(function (linha) {
 
-            const nome = linha.children[0].innerText.toLowerCase();
-            const mod = linha.children[1].innerText.toLowerCase();
+                const nome = linha.children[0] ? linha.children[0].innerText.toLowerCase() : "";
+                const mod = linha.children[1] ? linha.children[1].innerText.toLowerCase() : "";
 
-            let mostrar = true;
+                let mostrar = true;
 
-            if (texto && !nome.includes(texto) && !mod.includes(texto)) {
-                mostrar = false;
-            }
+                if (texto && !nome.includes(texto) && !mod.includes(texto)) {
+                    mostrar = false;
+                }
 
-            if (modalidade && mod !== modalidade) {
-                mostrar = false;
-            }
+                if (modalidade && mod !== modalidade) {
+                    mostrar = false;
+                }
 
-            linha.style.display = mostrar ? "" : "none";
+                linha.style.display = mostrar ? "" : "none";
 
-        });
+            });
 
-    }
+        }
 
-    campoPesquisa.addEventListener("keyup", filtrarTabela);
-    filtroModalidade.addEventListener("change", filtrarTabela);
+        campoPesquisa.addEventListener("keyup", filtrarTabela);
+        filtroModalidade.addEventListener("change", filtrarTabela);
 
-    if (btnNovo) {
-        btnNovo.addEventListener('click', () => {
-            alert('Abrir formulário de cadastro');
-        });
     }
 
 });
