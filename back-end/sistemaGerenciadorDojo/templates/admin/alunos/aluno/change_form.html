@@ -1,0 +1,39 @@
+{% extends "admin/base_site.html" %}
+{% load admin_urls %}
+{% block content %}
+
+<div class="container">
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-section">
+
+            {{ adminform.form.as_p }}
+
+            <button class="botao" type="submit">
+                Salvar
+            </button>
+
+            {% if original %}
+            <a href="{% url opts|admin_urlname:'delete' original.pk %}" class="botao" style="background:#444;">
+                Apagar
+            </a>
+            {% endif %}
+
+            <br></br>
+            {% if original %}
+            <a href="{% url 'admin:registrar_pagamento' original.pk %}" class="botao" style="background:hsl(102, 93%, 32%);">
+                Registrar Pagamento
+            </a>
+            {% endif %}
+
+        </div>
+
+        
+
+    </form>
+
+</div>
+
+{% endblock %}

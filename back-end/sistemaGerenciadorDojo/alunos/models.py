@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.utils.timezone import now
 
 
 class Modalidade(models.Model):
@@ -59,3 +60,32 @@ class Aluno(models.Model):
 
     class Meta:
         db_table = "aluno"
+
+
+class Pagamento(models.Model):
+
+    aluno = models.ForeignKey(
+        "Aluno",
+        on_delete=models.CASCADE,
+        related_name="pagamentos",
+    )
+
+    valor = models.DecimalField(
+        max_digits=8,
+        decimal_places=2,
+        default=280.00,
+    )
+
+    data_pagamento = models.DateTimeField(
+        auto_now_add=True,
+    )
+
+    mes_referencia = models.DateField(
+        default=now,
+    )
+
+    class Meta:
+        db_table = "pagamento"
+
+    def __str__(self):
+        return f"{self.aluno.nome} - " f"{self.mes_referencia.strftime('%m/%Y')}"

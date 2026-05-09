@@ -1,0 +1,64 @@
+{% extends "admin/change_list.html" %}
+{% load admin_urls %}
+
+{% block result_list %}
+
+<div class="container">
+
+    <div class="tabela-container">
+
+        <table class="tabela-sistema">
+
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Valor</th>
+                    <th>Data do Pagamento</th>
+                    <th>Mês Referência</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for obj in cl.result_list %}
+
+                <tr>
+
+                    <td data-label="Aluno">
+                        {{ obj.aluno.nome }}
+                    </td>
+
+                    <td data-label="Valor">
+                        R$ {{ obj.valor }}
+                    </td>
+
+                    <td data-label="Data">
+                        {{ obj.data_pagamento|date:"d/m/Y H:i" }}
+                    </td>
+
+                    <td data-label="Mês">
+                        {{ obj.mes_referencia|date:"m/Y" }}
+                    </td>
+
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="5">
+                        Nenhum pagamento encontrado.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
