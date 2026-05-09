@@ -66,7 +66,7 @@ class Pagamento(models.Model):
 
     aluno = models.ForeignKey(
         "Aluno",
-        on_delete=models.DO_NOTHING,
+        on_delete=models.CASCADE,
         related_name="pagamentos",
     )
 

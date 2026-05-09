@@ -45,7 +45,6 @@ class AlunoAdmin(admin.ModelAdmin):
 
         Pagamento.objects.create(
             aluno=aluno,
-            valor=150,
         )
 
         self.message_user(
