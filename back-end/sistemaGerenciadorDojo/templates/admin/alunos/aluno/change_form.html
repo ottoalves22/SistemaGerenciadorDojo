@@ -1,5 +1,13 @@
 {% extends "admin/base_site.html" %}
 {% load admin_urls %}
+{% block content_title %}
+<div style="margin-bottom:12px">
+    <a href="javascript:history.back()"
+       style="color:#A0A0A0;font-size:0.9rem;text-decoration:none;">
+        Voltar
+    </a>
+</div>
+{% endblock %}
 {% block content %}
 
 <div class="container">
