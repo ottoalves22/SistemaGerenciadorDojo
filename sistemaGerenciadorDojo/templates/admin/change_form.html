@@ -1,0 +1,40 @@
+{% extends "admin/base_site.html" %}
+{% load admin_urls %}
+
+{% block content_title %}
+<div style="margin-bottom:12px">
+    <a href="javascript:history.back()"
+       style="color:#A0A0A0;font-size:0.9rem;text-decoration:none;">
+        Voltar
+    </a>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-section">
+
+            {{ adminform.form.as_p }}
+
+            <button class="botao" type="submit">
+                Salvar
+            </button>
+
+            {% if original %}
+            <a href="{% url opts|admin_urlname:'delete' original.pk %}" class="botao" style="background:#444;">
+                Apagar
+            </a>
+            {% endif %}
+
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

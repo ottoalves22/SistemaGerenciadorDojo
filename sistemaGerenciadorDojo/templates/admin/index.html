@@ -1,0 +1,40 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'css/global.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+    
+
+    <div class="modalidades-grid">
+
+        {% for app in app_list %}
+            {% for model in app.models %}
+
+                <div class="modalidade-card">
+
+                    <h2>{{ model.name }}</h2>
+
+                    <p>
+                        Gerenciar {{ model.name|lower }}
+                    </p>
+
+                    <a class="botao" href="{{ model.admin_url }}">
+                        Abrir
+                    </a>
+
+                </div>
+
+            {% endfor %}
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

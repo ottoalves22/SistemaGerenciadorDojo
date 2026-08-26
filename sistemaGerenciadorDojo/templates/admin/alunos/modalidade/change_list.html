@@ -1,0 +1,58 @@
+{% extends "admin/change_list.html" %}
+{% load admin_urls %}
+
+{% block content_title %}
+<div style="margin-bottom:12px">
+    <a href="javascript:history.back()"
+       style="color:#A0A0A0;font-size:0.9rem;text-decoration:none;">
+        Voltar
+    </a>
+</div>
+{% endblock %}
+{% block result_list %}
+
+<div class="container">
+
+    <div class="tabela-container">
+        <table class="tabela-sistema">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for obj in cl.result_list %}
+                <tr>
+                    <td data-label="Nome">
+                        {{ obj }}
+                    </td>
+
+                    <td data-label="Ações">
+
+                        <a href="{% url opts|admin_urlname:'change' obj.pk %}"
+                           class="botao">
+                           Editar
+                        </a>
+
+                        <a href="{% url opts|admin_urlname:'delete' obj.pk %}"
+                           class="botao"
+                           style="background:#b91c1c;">
+                           Excluir
+                        </a>
+
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">Nenhum aluno encontrado.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

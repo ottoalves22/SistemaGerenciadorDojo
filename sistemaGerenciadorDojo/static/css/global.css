@@ -1,0 +1,1098 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;700&display=swap');
+
+
+/* =================================================
+   DJANGO ADMIN — TEMA PERSONALIZADO
+   ================================================= */
+
+
+/* -------------------------------------------------
+   1. FONTE GLOBAL
+   ------------------------------------------------- */
+
+body,
+input,
+select,
+textarea,
+button {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+/* -------------------------------------------------
+   2. LINKS
+   ------------------------------------------------- */
+
+a {
+    color: #c42a0f !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    color: #E65C00 !important;
+}
+
+.menu-lateral a {
+    color: #FFFFFF !important;
+}
+
+.menu-lateral a:hover {
+    color: #FFFFFF !important;
+}
+
+
+/* -------------------------------------------------
+   3. CABEÇALHO DJANGO ADMIN (reset nativo)
+   ------------------------------------------------- */
+
+#header {
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#branding {
+    background: transparent !important;
+    float: none !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+#user-tools {
+    display: none !important;
+}
+
+
+/* -------------------------------------------------
+   4. BREADCRUMB
+   ------------------------------------------------- */
+
+.breadcrumbs,
+div.breadcrumbs {
+    display: none;
+}
+
+
+/* -------------------------------------------------
+   5. CONTEÚDO PRINCIPAL
+   ------------------------------------------------- */
+
+#content,
+body.dashboard #content {
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 20px;
+}
+
+#content h1 {
+    display: none !important;
+}
+
+.module {
+    background: #2C2C2C !important;
+    border: 1px solid #444 !important;
+    box-shadow: none !important;
+}
+
+.module h2,
+.module caption,
+.inline-group h2 {
+    background: #c42a0f !important;
+    color: white !important;
+    font-size: 0.8125rem;
+}
+
+
+/* -------------------------------------------------
+   6. TÍTULOS
+   ------------------------------------------------- */
+
+h1, h2, h3 {
+    color: white !important;
+}
+
+h2 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+
+/* -------------------------------------------------
+   7. TABELAS
+   ------------------------------------------------- */
+
+table {
+    background: #2C2C2C !important;
+    color: white !important;
+}
+
+thead {
+    background: #1f1f1f !important;
+}
+
+th {
+    color: #c42a0f !important;
+}
+
+
+/* -------------------------------------------------
+   8. INPUTS / SELECTS / TEXTAREAS (global)
+   ------------------------------------------------- */
+
+input,
+select,
+textarea {
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+    border-radius: 6px;
+    height: 2.5rem;
+}
+
+
+/* -------------------------------------------------
+   9. BOTÕES GERAIS (Django Admin)
+   ------------------------------------------------- */
+
+.button,
+input[type=submit],
+input[type=button],
+.submit-row input {
+    background: #c42a0f !important;
+    border: none !important;
+    color: white !important;
+    border-radius: 8px;
+    padding: 8px 16px;
+}
+
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover {
+    background: #E65C00 !important;
+}
+
+.toggle-nav-sidebar {
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   10. BOTÃO "+ ADD" (Django Admin)
+   ------------------------------------------------- */
+
+.addlink {
+    background: #2e7d32 !important;
+    color: white !important;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    margin-left: 10px;
+    text-decoration: none !important;
+}
+
+.addlink::before {
+    content: "+" !important;
+    margin-right: 4px;
+}
+
+.addlink:hover {
+    background: #43a047 !important;
+    color: white !important;
+}
+
+#nav-sidebar .addlink {
+    background: transparent !important;
+    color: white !important;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    border-radius: 0;
+}
+
+#nav-sidebar .addlink:hover {
+    background: transparent !important;
+    color: #43a047 !important;
+}
+
+
+/* -------------------------------------------------
+   11. SIDEBAR DJANGO (#nav-sidebar)
+   ------------------------------------------------- */
+
+#nav-sidebar {
+    background-color: #2C2C2C !important;
+    border-right: 1px solid #444;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    width: 240px;
+    padding-top: 20px;
+}
+
+#nav-sidebar .module h2 {
+    background: #1f1f1f !important;
+    color: #c42a0f !important;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    margin: 0;
+    border-bottom: 1px solid #444;
+}
+
+#nav-sidebar .module ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#nav-sidebar .module li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+}
+
+#nav-sidebar a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+}
+
+#nav-sidebar a:hover {
+    background: #c42a0f;
+    color: white !important;
+    border-radius: 6px;
+    padding-left: 10px;
+}
+
+#nav-sidebar .current-app > a,
+#nav-sidebar .current-model > a {
+    background: #c42a0f !important;
+    color: white !important;
+    border-radius: 6px;
+}
+
+#nav-sidebar input {
+    width: 90%;
+    margin: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #1A1A1A;
+    color: white;
+}
+
+#nav-sidebar table,
+#nav-sidebar thead,
+#nav-sidebar tbody,
+#nav-sidebar tr,
+#nav-sidebar td,
+#nav-sidebar th {
+    background: transparent !important;
+    border: none !important;
+}
+
+#nav-sidebar tr:hover,
+#nav-sidebar tr:hover td,
+#nav-sidebar tr:hover th {
+    background: transparent !important;
+}
+
+#nav-sidebar th[scope="row"] {
+    background: transparent !important;
+}
+
+#nav-sidebar th[scope="row"] a:hover {
+    background: #c42a0f !important;
+    color: white !important;
+    border-radius: 6px;
+    padding-left: 10px;
+    display: block;
+}
+
+
+/* =================================================
+   SITE PRINCIPAL
+   ================================================= */
+
+
+/* -------------------------------------------------
+   BASE
+   ------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    background-color: #1A1A1A;
+    color: #FFFFFF;
+    line-height: 1.6;
+}
+
+.container h1 + h1 {
+    display: none;
+}
+
+
+/* -------------------------------------------------
+   HEADER
+   ------------------------------------------------- */
+
+.site-header {
+    background-color: rgba(26, 26, 26, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #444;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.2rem;
+    color: white !important;
+    margin: 0;
+    letter-spacing: 1px;
+    text-decoration: none !important;
+    margin-left:20px;
+}
+
+.logo:hover {
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   MENU HAMBÚRGUER — visível em todas as telas
+   ------------------------------------------------- */
+
+.btn-menu {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    display: block;        /* sempre visível */
+    line-height: 1;
+    padding: 0;
+}
+
+.btn-menu:hover {
+    color: #c42a0f;
+}
+
+
+/* -------------------------------------------------
+   MENU LATERAL (drawer)
+   ------------------------------------------------- */
+
+.menu-lateral {
+    position: fixed;
+    left: -260px;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    background: #1f1f1f;
+    padding-top: 70px;
+    transition: left 0.3s ease;
+    z-index: 1100;
+    border-right: 1px solid #333;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+.menu-lateral ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-lateral li {
+    border-bottom: 1px solid #333;
+}
+
+.menu-lateral a {
+    display: block;
+    padding: 16px 24px;
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: background 0.2s, padding-left 0.2s;
+}
+
+.menu-lateral a:hover {
+    background: #c42a0f;
+    padding-left: 32px;
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   MENU DO USUÁRIO (dropdown + botão sair)
+   ------------------------------------------------- */
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: white !important;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    transition: border-color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.user-dropdown-btn:hover {
+    border-color: #c42a0f;
+    color: white !important;
+}
+
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 8px);
+    background: #2C2C2C;
+    border: 1px solid #444;
+    border-radius: 8px;
+    min-width: 160px;
+    z-index: 9999;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.user-dropdown-menu.aberto {
+    display: block;
+}
+
+.user-dropdown-menu a {
+    display: block;
+    padding: 10px 16px;
+    color: white !important;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.user-dropdown-menu a:hover {
+    background: #c42a0f;
+    color: white !important;
+}
+
+.btn-logout {
+    background: transparent;
+    border: 1px solid #c42a0f;
+    color: #c42a0f !important;
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background: #c42a0f !important;
+    color: white !important;
+}
+
+
+/* -------------------------------------------------
+   CONTAINER
+   ------------------------------------------------- */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+
+/* -------------------------------------------------
+   HERO
+   ------------------------------------------------- */
+
+.hero-section {
+    text-align: center;
+    padding: 60px 0;
+}
+
+.hero-content h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 4rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    color: #A0A0A0;
+}
+
+
+/* -------------------------------------------------
+   BOTÃO PRINCIPAL (.botao)
+   ------------------------------------------------- */
+
+.botao {
+    display: inline-block;
+    padding: 15px 35px;
+    border: none;
+    background-color: #c42a0f;
+    color: #FFFFFF !important;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease;
+    text-decoration: none !important;
+    margin-bottom: 25px;
+}
+
+.botao:hover {
+    background-color: #E65C00 !important;
+    color: #FFFFFF !important;
+}
+
+
+/* -------------------------------------------------
+   MODALIDADES
+   ------------------------------------------------- */
+
+.modalidades-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.modalidades-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+}
+
+.modalidade-card {
+    background-color: #2C2C2C;
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #444;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modalidade-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modalidade-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.modalidade-card-content {
+    padding: 25px;
+}
+
+.modalidade-card h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.modalidade-card p {
+    margin-bottom: 20px;
+    color: #A0A0A0;
+}
+
+.modalidade-card h3 {
+    color: #c42a0f;
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+
+/* -------------------------------------------------
+   PLANOS
+   ------------------------------------------------- */
+
+.planos-section {
+    padding: 50px 0;
+}
+
+.planos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.plano-card {
+    background-color: #2C2C2C;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #444;
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.plano-card:hover {
+    border-color: #c42a0f;
+}
+
+.plano-card.popular {
+    border: 2px solid #c42a0f;
+    transform: scale(1.05);
+}
+
+.tag-popular {
+    background-color: #c42a0f;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 700;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.plano-card h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 2rem;
+}
+
+.preco {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 15px 0;
+    color: #c42a0f;
+}
+
+.preco span {
+    font-size: 1rem;
+    color: #A0A0A0;
+}
+
+.plano-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.plano-card ul li {
+    margin-bottom: 10px;
+}
+
+.plano-card ul li.disabled {
+    color: #A0A0A0;
+    text-decoration: line-through;
+}
+
+
+/* -------------------------------------------------
+   FORMULÁRIO
+   ------------------------------------------------- */
+
+.form-section {
+    background-color: #2C2C2C;
+    padding: 40px;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-section p {
+    margin-bottom: 16px;
+}
+
+.form-section label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: white;
+}
+
+.form-section input,
+.form-section select,
+.form-section textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333 !important;
+    color: #fff !important;
+}
+
+.form-section input:focus,
+.form-section select:focus,
+.form-section textarea:focus {
+    outline: none;
+    border-color: #c42a0f;
+}
+
+.form-section input[type="date"] {
+    color-scheme: dark;
+}
+
+.form-section input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.form-section input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #c42a0f;
+    cursor: pointer;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 700;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c42a0f;
+}
+
+.mensagem-erro {
+    color: #c42a0f;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.form-admin-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-admin-wrapper .form-row {
+    background: #2C2C2C;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #444;
+}
+
+.form-admin-wrapper label {
+    font-weight: 700;
+    color: white;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-admin-wrapper input,
+.form-admin-wrapper select,
+.form-admin-wrapper textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: white !important;
+}
+
+.form-admin-wrapper .submit-row {
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center;
+}
+
+
+/* -------------------------------------------------
+   TABELA DO SISTEMA
+   ------------------------------------------------- */
+
+.tabela-container {
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.tabela-sistema {
+    width: 100%;
+    border-collapse: collapse;
+    background: #2C2C2C;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tabela-sistema thead {
+    background: #1f1f1f;
+}
+
+.tabela-sistema th {
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 16px;
+    border-bottom: 2px solid #c42a0f;
+    text-align: left;
+    color: #c42a0f;
+    font-size: 0.9rem;
+}
+
+.tabela-sistema td {
+    padding: 14px 16px;
+    border-top: 1px solid #444;
+    font-size: 0.95rem;
+}
+
+.tabela-sistema tr:hover {
+    background: #333;
+}
+
+/* Alinhamento vertical e destaque dos cabeçalhos */
+.tabela-sistema th,
+.tabela-sistema td {
+    vertical-align: middle;
+}
+
+
+
+/* Botões de ação menores e alinhados */
+.tabela-sistema .btn-editar,
+.tabela-sistema .btn-excluir {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+/* -------------------------------------------------
+   BOTÕES CRUD
+   ------------------------------------------------- */
+
+.btn-editar {
+    background: #444;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.btn-editar:hover {
+    background: #c42a0f;
+}
+
+.btn-excluir {
+    background: #c42a0f;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-excluir:hover {
+    background: #666;
+}
+
+a.btn-editar,
+a.btn-editar:hover,
+a.btn-excluir,
+a.btn-excluir:hover {
+    color: white !important;
+    text-decoration: none !important;
+}
+
+
+/* -------------------------------------------------
+   FILTROS DA TABELA
+   ------------------------------------------------- */
+
+.barra-filtros {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.barra-filtros input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2C2C2C;
+    color: white;
+}
+
+.barra-filtros select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #2C2C2C;
+    color: white;
+    min-width: 180px;
+    white-space: nowrap;
+}
+
+
+/* -------------------------------------------------
+   BOTÃO NOVO REGISTRO
+   ------------------------------------------------- */
+
+.topo-acoes {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+}
+
+.btn-novo {
+    background: #c42a0f;
+    color: white !important;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    text-decoration: none !important;
+}
+
+.btn-novo:hover {
+    background: #a8210c;
+    color: white !important;
+    transform: translateY(-2px);
+}
+
+
+/* =================================================
+   RESPONSIVO
+   ================================================= */
+
+@media (min-width: 600px) {
+    .modalidades-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .modalidades-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 20px 15px;
+    }
+
+    .tabela-sistema thead {
+        display: none;
+    }
+
+    .tabela-sistema,
+    .tabela-sistema tbody,
+    .tabela-sistema tr,
+    .tabela-sistema td {
+        display: block;
+        width: 100%;
+        background: transparent;
+    }
+
+    .tabela-sistema tr {
+        margin-bottom: 20px;
+        background: #2C2C2C;
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid #444;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .tabela-sistema td {
+        border: none;
+        padding: 8px 0;
+    }
+
+    .tabela-sistema td::before {
+        content: attr(data-label);
+        font-weight: 700;
+        color: #c42a0f;
+        display: block;
+        margin-bottom: 4px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .topo-acoes {
+        justify-content: center;
+    }
+
+    .btn-novo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-section {
+        padding: 24px 16px;
+    }
+}
