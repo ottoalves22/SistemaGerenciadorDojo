@@ -1,28 +1,82 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
     container_name: sgd_postgres
-    restart: always
+    restart: unless-stopped
+
     environment:
-      POSTGRES_DB: sgd_db
-      POSTGRES_USER: sgd_user
-      POSTGRES_PASSWORD: sgd_password
-    ports:
-      - "5432:5432"
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+    networks:
+      - sgd_network
+
   web:
-    build: .
-    command: uv run python manage.py runserver 0.0.0.0:8000
-    volumes:
-      - ./sistemaGerenciadorDojo:/app
-      - /app/.venv
-    ports:
-      - "8000:8000"
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: sgd_web
+    restart: unless-stopped
+
+    command: >
+      uv run gunicorn
+      SGD.wsgi:application
+      --bind 0.0.0.0:8000
+      --workers 2
+      --timeout 120
+
+    environment:
+      DJANGO_DEBUG: ${DJANGO_DEBUG}
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
+
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+
     depends_on:
       - db
 
+    volumes:
+      - staticfiles:/app/sistemaGerenciadorDojo/staticfiles
+
+    networks:
+      - sgd_network
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: sgd_nginx
+    restart: unless-stopped
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - staticfiles:/app/staticfiles:ro
+      - certbot_www:/var/www/certbot:ro
+      - letsencrypt:/etc/letsencrypt:ro
+
+    depends_on:
+      - web
+
+    networks:
+      - sgd_network
+
 volumes:
   postgres_data:
+  staticfiles:
+  certbot_www:
+  letsencrypt:
+
+networks:
+  sgd_network:
+    driver: bridge
