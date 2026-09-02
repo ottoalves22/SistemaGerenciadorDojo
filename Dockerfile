@@ -1,27 +1,19 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim
 
 WORKDIR /app
 
-ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    UV_LINK_MODE=copy \
-    UV_PYTHON_DOWNLOADS=never \
-    UV_PROJECT_ENVIRONMENT=/app/.venv
 
-COPY --from=ghcr.io/astral-sh/uv:0.8.14 /uv /uvx /bin/
+# Copia arquivos de requisitos
+COPY pyproject.toml uv.lock* ./
 
-COPY pyproject.toml uv.lock /_lock/
+# Instala uv e dependências
+RUN pip install uv && uv sync --frozen
 
-RUN --mount=type=cache,target=/root/.cache \
-    cd /_lock && \
-    uv sync \
-    --frozen \
-    --no-install-project
-
+# Copia o código
 COPY . .
 
-WORKDIR /app/sistemaGerenciadorDojo
+# Torna scripts executáveis
+RUN chmod +x entrypoint.sh cron_command.sh
 
-EXPOSE 8000
-
-CMD ["uv", "run", "gunicorn", "SGD.wsgi:application", "--bind", "0.0.0.0:8000"]
+ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["uv", "run", "gunicorn", "--bind", "0.0.0.0:8000", "SGD.wsgi"]

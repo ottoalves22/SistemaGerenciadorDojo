@@ -45,7 +45,7 @@ services:
       - db
 
     volumes:
-      - staticfiles:/app/sistemaGerenciadorDojo/staticfiles
+      - static_volume:/app/sistemaGerenciadorDojo/staticfiles
 
     networks:
       - sgd_network
@@ -64,6 +64,8 @@ services:
       - staticfiles:/app/staticfiles:ro
       - certbot_www:/var/www/certbot:ro
       - letsencrypt:/etc/letsencrypt:ro
+      - static_volume:/static           # monta no Nginx em /static
+
 
     depends_on:
       - web
@@ -76,6 +78,8 @@ volumes:
   staticfiles:
   certbot_www:
   letsencrypt:
+  static_volume:
+
 
 networks:
   sgd_network:

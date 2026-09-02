@@ -44,10 +44,21 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "alunos.apps.AlunosConfig",
+    "django_crontab",
 ]
+CRONJOBS = [
+    (
+        "* * * * *",
+        "/app/cron_command.sh send_monthly_fee_reminder",
+        ">> /var/log/django_cron.log 2>&1",
+    )
+]
+
+LOGIN_REDIRECT_URL = "/admin/"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -132,7 +143,7 @@ USE_TZ = True
 # =============================================================================
 # Static files
 # =============================================================================
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
