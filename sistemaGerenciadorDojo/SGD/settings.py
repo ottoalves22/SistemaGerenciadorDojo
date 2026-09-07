@@ -26,6 +26,7 @@ ALLOWED_HOSTS = [
     "163.176.2.22",
     "localhost",
     "127.0.0.1",
+    "ornellasdojo.flashhub.net",
 ]
 
 
