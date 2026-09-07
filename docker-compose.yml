@@ -65,6 +65,8 @@ services:
       - certbot_www:/var/www/certbot:ro
       - letsencrypt:/etc/letsencrypt:ro
       - static_volume:/static           # monta no Nginx em /static
+      - ./certbot/www:/var/www/certbot          # Pasta para os desafios
+      - ./certbot/conf:/etc/letsencrypt  
 
 
     depends_on:
