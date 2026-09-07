@@ -67,6 +67,10 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "SGD.urls"
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://ornellasdojo.flashhub.net",
+]
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
