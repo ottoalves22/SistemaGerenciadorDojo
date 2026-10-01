@@ -45,7 +45,7 @@ class Aluno(models.Model):
     )
     data_nascimento = models.DateField(verbose_name=_("Data de Nascimento"))
     documento = models.CharField(max_length=60, verbose_name=_("documento"), default="")
-    contrato = models.FileField(upload_to=caminho_contrato, blank=True, null=True)
+    arquivos = models.FileField(upload_to=caminho_contrato, blank=True, null=True)
     telefone = models.CharField(max_length=60, verbose_name=_("Telefone"))
     contato_emergencia = models.CharField(
         max_length=60,
