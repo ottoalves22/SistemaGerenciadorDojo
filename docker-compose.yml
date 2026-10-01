@@ -16,6 +16,8 @@ services:
       - sgd_network
 
   web:
+    ports:
+      - "8000:8000"
     build:
       context: .
       dockerfile: Dockerfile
@@ -50,28 +52,28 @@ services:
     networks:
       - sgd_network
 
-  nginx:
-    image: nginx:1.27-alpine
-    container_name: sgd_nginx
-    restart: unless-stopped
+  # nginx:
+  #   image: nginx:1.27-alpine
+  #   container_name: sgd_nginx
+  #   restart: unless-stopped
 
-    ports:
-      - "80:80"
-      - "443:443"
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
 
-    volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d:ro
-      - staticfiles:/app/staticfiles:ro
-      - static_volume:/static
-      - ./certbot/www:/var/www/certbot      # SEM :ro, para o Certbot escrever
-      - ./certbot/conf:/etc/letsencrypt 
+  #   volumes:
+  #     - ./nginx/conf.d:/etc/nginx/conf.d:ro
+  #     - staticfiles:/app/staticfiles:ro
+  #     - static_volume:/static
+  #     - ./certbot/www:/var/www/certbot      # SEM :ro, para o Certbot escrever
+  #     - ./certbot/conf:/etc/letsencrypt 
 
 
-    depends_on:
-      - web
+  #   depends_on:
+  #     - web
 
-    networks:
-      - sgd_network
+  #   networks:
+  #     - sgd_network
 
 volumes:
   postgres_data:

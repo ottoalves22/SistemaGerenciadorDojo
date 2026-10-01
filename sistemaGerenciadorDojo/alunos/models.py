@@ -15,6 +15,9 @@ class Modalidade(models.Model):
     class Meta:
         db_table = "modalidade"
 
+def caminho_contrato(instance, filename):
+    return f"contratos/{instance.id}/{filename}"
+
 
 class Aluno(models.Model):
     class Faixa(models.TextChoices):
@@ -41,7 +44,8 @@ class Aluno(models.Model):
         verbose_name=_("Cor da Faixa"),
     )
     data_nascimento = models.DateField(verbose_name=_("Data de Nascimento"))
-    cpf = models.CharField(max_length=60, verbose_name=_("CPF"))
+    documento = models.CharField(max_length=60, verbose_name=_("documento"), default="")
+    contrato = models.FileField(upload_to=caminho_contrato, blank=True, null=True)
     telefone = models.CharField(max_length=60, verbose_name=_("Telefone"))
     contato_emergencia = models.CharField(
         max_length=60,

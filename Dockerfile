@@ -2,7 +2,7 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-
+ENV DEBIAN_FRONTEND=noninteractive
 # Copia arquivos de requisitos
 COPY pyproject.toml uv.lock* ./
 
