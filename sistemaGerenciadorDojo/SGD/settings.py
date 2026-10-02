@@ -98,7 +98,7 @@ WALLET_DIR = '/app/wallet_dojo'  # ajuste se seu HOME for diferente
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'dojodb_high',          # <-- nome à esquerda do '=' no tnsnames.ora
+        'NAME': 'ornellasdojodb_medium',          # <-- nome à esquerda do '=' no tnsnames.ora
         'USER': 'ADMIN',
         'PASSWORD': os.environ.get('ORACLE_ADMIN_PASSWORD'),
         'OPTIONS': {
