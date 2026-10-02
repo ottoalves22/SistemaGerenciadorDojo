@@ -12,3 +12,8 @@ Oss!
 # update2 01/10/2026
  - Adição do esqueleto da funcionalidade de whatsapp (Eles precisam MUITO de um lembrete de pagamento acessível)
  - #TODO: Criar token da meta e verificar o uso de um VoIP pra não ter de comprar outro chip de telefone
+
+# update3 02/10/2026
+ - Criação de branch para deploy em produção deploy_production. Vamos usar a branch main como desenvolvimento. Atualizações por meio de Pull Request main -> deploy_production
+ - Criação de banco de dados na Oracle CLoud
+ - Atualização do código de produção (na branch deploy_production) para usar Oracle DB

@@ -93,15 +93,19 @@ WSGI_APPLICATION = "SGD.wsgi.application"
 # =============================================================================
 # Database
 # =============================================================================
+WALLET_DIR = '/app/wallet_dojo'  # ajuste se seu HOME for diferente
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["POSTGRES_DB"],
-        "USER": os.environ["POSTGRES_USER"],
-        "PASSWORD": os.environ["POSTGRES_PASSWORD"],
-        "HOST": os.environ.get("POSTGRES_HOST", "db"),
-        "PORT": os.environ.get("POSTGRES_PORT", "5432"),
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'dojodb_high',          # <-- nome à esquerda do '=' no tnsnames.ora
+        'USER': 'ADMIN',
+        'PASSWORD': os.environ.get('ORACLE_ADMIN_PASSWORD'),
+        'OPTIONS': {
+            'config_dir': WALLET_DIR,
+            'wallet_location': WALLET_DIR,
+            'wallet_password': os.environ.get('ORACLE_WALLET_PASSWORD'),
+        },
     }
 }
 
