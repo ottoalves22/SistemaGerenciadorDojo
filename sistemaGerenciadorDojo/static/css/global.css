@@ -861,6 +861,28 @@ body {
     text-align: center;
 }
 
+/* -------------------------------------------------
+   CAMPO DE ARQUIVO (Aluno) — link de download e trocar
+   ------------------------------------------------- */
+
+.form-section p a[href*="/media/"] {
+    display: inline-block;
+    background: #2e7d32 !important;
+    color: white !important;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-decoration: none !important;
+    margin-right: 10px;
+}
+
+.form-section p a[href*="/media/"]:hover {
+    background: #43a047 !important;
+}
+
+.form-section p input[type="checkbox"] {
+    margin-left: 4px;
+}
 
 /* -------------------------------------------------
    TABELA DO SISTEMA

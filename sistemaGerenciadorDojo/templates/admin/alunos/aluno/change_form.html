@@ -17,6 +17,16 @@
 
         <div class="form-section">
 
+            <div class="form-group">
+                <label for="tipo_documento_select">Tipo de Documento</label>
+                <select id="tipo_documento_select">
+                    <option value="cpf">CPF</option>
+                    <option value="rg">RG</option>
+                    <option value="passaporte">Passaporte</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
             {{ adminform.form.as_p }}
 
             <button class="botao" type="submit">
