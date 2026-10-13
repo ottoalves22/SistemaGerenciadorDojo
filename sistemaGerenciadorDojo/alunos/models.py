@@ -55,9 +55,6 @@ class Aluno(models.Model):
         blank=True,
     )
     aluno_ativo = models.BooleanField(default=True, verbose_name=_("Ativo"))
-    mensalidade_em_dia = models.BooleanField(
-        default=False, verbose_name=_("Mensalidade em Dia")
-    )  # Já começa devendo
 
     def __str__(self):
         return f"{self.nome}-{self.modalidade}"
