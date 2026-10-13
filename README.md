@@ -18,3 +18,7 @@ Oss!
 - Adição do campo de seleção de tipo de documento já que aceitamos mais de um tipo. A máscara de formatação acompanha o tipo de documento selecionado 
 - Teste de funcionalidade do campo de arquivos para que seja possível baixar seu conteúdo prévio. (conceito em revisão, nenhum teste subiu para main)
 - #TODO: revisar e definir nova funcionalidade 
+
+# update4 13/10/2026
+ - Adição de botões de Registrar Pagamento na listagem de Alunos para facilitar uso
+ 
