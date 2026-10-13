@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.utils.timezone import now
+from .storage import OracleStorage
 
 
 class Modalidade(models.Model):
@@ -45,7 +46,12 @@ class Aluno(models.Model):
     )
     data_nascimento = models.DateField(verbose_name=_("Data de Nascimento"))
     documento = models.CharField(max_length=60, verbose_name=_("documento"), default="")
-    arquivos = models.FileField(upload_to=caminho_contrato, blank=True, null=True)
+    arquivos = models.FileField(
+        upload_to=caminho_contrato,
+        storage=OracleStorage(),
+        blank=True,
+        null=True,
+    )    
     telefone = models.CharField(max_length=60, verbose_name=_("Telefone"))
     contato_emergencia = models.CharField(
         max_length=60,

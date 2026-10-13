@@ -32,6 +32,9 @@ services:
       --workers 2
       --timeout 120
 
+    env_file:
+      - .env
+
     environment:
       DJANGO_DEBUG: ${DJANGO_DEBUG}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
@@ -42,7 +45,7 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
-
+      
     depends_on:
       - db
 

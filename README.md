@@ -21,4 +21,6 @@ Oss!
 
 # update4 13/10/2026
  - Adição de botões de Registrar Pagamento na listagem de Alunos para facilitar uso
+ - Comecei a configurar o bucket e o envio de arquivos no formulario de aluno - Estou tendo dor de cabeça com as policies e keys. Vou arrumar daqui umas horas
+ - Limpei as migrations que tavam travando (migration 12). Deixa pra rodar cada uma em cada ambiente
  
