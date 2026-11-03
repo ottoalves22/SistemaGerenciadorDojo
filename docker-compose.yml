@@ -36,6 +36,7 @@ services:
 
     volumes:
       - static_volume:/app/sistemaGerenciadorDojo/staticfiles
+      - /home/ubuntu/wallet_dojo:/app/wallet_dojo:ro
 
     networks:
       - sgd_network
