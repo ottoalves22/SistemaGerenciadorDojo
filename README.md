@@ -9,10 +9,6 @@ Oss!
  - #TODO: Criar recuperação de arquivo na tela do aluno (criar codigo de "download" do arquivo)
 
 
-# update2 01/10/2026
- - Adição do esqueleto da funcionalidade de whatsapp (Eles precisam MUITO de um lembrete de pagamento acessível)
- - #TODO: Criar token da meta e verificar o uso de um VoIP pra não ter de comprar outro chip de telefone
-
 # update3 08/10/2026
 - Adição das máscaras de formatação de dados para formulários afim de facilitar o uso do formulário e também garantir consistência de tipo de dado no bd
 - Adição do campo de seleção de tipo de documento já que aceitamos mais de um tipo. A máscara de formatação acompanha o tipo de documento selecionado 
