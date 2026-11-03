@@ -48,7 +48,7 @@ class Aluno(models.Model):
     documento = models.CharField(max_length=60, verbose_name=_("documento"), default="")
     arquivos = models.FileField(
         upload_to=caminho_contrato,
-        storage=OracleStorage(),
+        storage=OracleStorage,
         blank=True,
         null=True,
     )    

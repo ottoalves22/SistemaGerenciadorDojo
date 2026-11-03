@@ -29,8 +29,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
-      OCI_CONFIG_FILE: /root/.oci/config
-      OCI_BUCKET_NAME: ornellas-dojo-files
+      OCI_AUTH: instance_principal
+      OCI_BUCKET_NAME: docs-ornellas
       OCI_NAMESPACE: grcdvqigfkdr
       OCI_REGION: sa-saopaulo-1
 
