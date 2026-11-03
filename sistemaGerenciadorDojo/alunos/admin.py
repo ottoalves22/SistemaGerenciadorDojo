@@ -54,3 +54,4 @@ class AlunoAdmin(admin.ModelAdmin):
         )
 
         return redirect(f"/admin/alunos/aluno/{aluno.id}/change/")
+    

@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 # =============================================================================
 
 INSTALLED_APPS = [
+    'storages',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -162,3 +163,9 @@ STATICFILES_DIRS = [
 # =============================================================================
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+ORACLE_ACCESS_KEY   = os.environ["ORACLE_ACCESS_KEY"]     # Customer Secret Key -> Access Key
+ORACLE_SECRET_KEY   = os.environ["ORACLE_SECRET_KEY"]     # Customer Secret Key -> Secret Key
+ORACLE_BUCKET_NAME  = os.environ["ORACLE_BUCKET_NAME"]
+ORACLE_NAMESPACE    = os.environ["ORACLE_NAMESPACE"]      # ex: "axxxxxxxxxxx"
+ORACLE_REGION       = os.environ["ORACLE_REGION"] 

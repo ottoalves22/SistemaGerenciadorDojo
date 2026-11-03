@@ -17,7 +17,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import include, path
-from alunos.views import home  # ajuste o import
+from alunos.views import home
 
 urlpatterns = [
     path("", home, name="home"),

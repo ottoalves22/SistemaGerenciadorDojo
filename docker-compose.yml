@@ -16,16 +16,28 @@ services:
       --workers 2
       --timeout 120
 
+    env_file:
+      - .env
+
     environment:
       DJANGO_DEBUG: ${DJANGO_DEBUG}
       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
       DJANGO_ALLOWED_HOSTS: ${DJANGO_ALLOWED_HOSTS}
-      ORACLE_ADMIN_PASSWORD: ${ORACLE_ADMIN_PASSWORD}       
-      ORACLE_WALLET_PASSWORD: ${ORACLE_WALLET_PASSWORD} 
+
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOST: db
+      POSTGRES_PORT: 5432
+      OCI_CONFIG_FILE: /root/.oci/config
+      OCI_BUCKET_NAME: ornellas-dojo-files
+      OCI_NAMESPACE: grcdvqigfkdr
+      OCI_REGION: sa-saopaulo-1
+    depends_on:
+      - db
 
     volumes:
       - static_volume:/app/sistemaGerenciadorDojo/staticfiles
-      - /home/ubuntu/wallet_dojo:/app/wallet_dojo:ro
 
     networks:
       - sgd_network

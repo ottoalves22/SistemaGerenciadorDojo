@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.core.exceptions import ValidationError
 from django.utils.timezone import now
+from .storage import OracleStorage
 
 
 class Modalidade(models.Model):
@@ -45,7 +46,12 @@ class Aluno(models.Model):
     )
     data_nascimento = models.DateField(verbose_name=_("Data de Nascimento"))
     documento = models.CharField(max_length=60, verbose_name=_("documento"), default="")
-    arquivos = models.FileField(upload_to=caminho_contrato, blank=True, null=True)
+    arquivos = models.FileField(
+        upload_to=caminho_contrato,
+        storage=OracleStorage(),
+        blank=True,
+        null=True,
+    )    
     telefone = models.CharField(max_length=60, verbose_name=_("Telefone"))
     contato_emergencia = models.CharField(
         max_length=60,
@@ -55,9 +61,6 @@ class Aluno(models.Model):
         blank=True,
     )
     aluno_ativo = models.BooleanField(default=True, verbose_name=_("Ativo"))
-    mensalidade_em_dia = models.BooleanField(
-        default=False, verbose_name=_("Mensalidade em Dia")
-    )  # Já começa devendo
 
     def __str__(self):
         return f"{self.nome}-{self.modalidade}"

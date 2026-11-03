@@ -127,4 +127,124 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    // -----------------------------
+    // MÁSCARAS DE CAMPOS (Aluno)
+    // -----------------------------
+
+    function aplicarMascaraTelefone(campo) {
+        campo.setAttribute("placeholder", "(00) 00000-0000");
+        campo.setAttribute("maxlength", "15");
+
+        campo.addEventListener("input", function () {
+            let v = campo.value.replace(/\D/g, "").slice(0, 11);
+
+            if (v.length === 11) {
+                v = v.replace(/(\d{2})(\d{5})(\d{4})/, "($1) $2-$3");
+            } else if (v.length === 10) {
+                v = v.replace(/(\d{2})(\d{4})(\d{4})/, "($1) $2-$3");
+            } else if (v.length > 6) {
+                v = v.replace(/(\d{2})(\d{4,5})(\d{0,4})/, "($1) $2-$3");
+            } else if (v.length > 2) {
+                v = v.replace(/(\d{2})(\d{0,5})/, "($1) $2");
+            } else if (v.length > 0) {
+                v = v.replace(/(\d{0,2})/, "($1");
+            }
+
+            campo.value = v;
+        });
+    }
+
+
+
+    // Documento: máscara varia conforme o tipo selecionado
+    function configurarMascaraDocumento(campoDoc, selectTipo) {
+        function aplicar() {
+            const tipo = selectTipo.value;
+            campoDoc.removeEventListener("input", campoDoc._maskHandler);
+
+            if (tipo === "cpf") {
+                campoDoc.setAttribute("placeholder", "000.000.000-00");
+                campoDoc.setAttribute("maxlength", "14");
+                campoDoc._maskHandler = function () {
+                    let v = campoDoc.value.replace(/\D/g, "").slice(0, 11);
+                    v = v.replace(/(\d{3})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+                    campoDoc.value = v;
+                };
+            } else if (tipo === "rg") {
+                campoDoc.setAttribute("placeholder", "00.000.000-0");
+                campoDoc.setAttribute("maxlength", "12");
+                campoDoc._maskHandler = function () {
+                    let v = campoDoc.value.replace(/\D/g, "").slice(0, 9);
+                    v = v.replace(/(\d{2})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d)/, "$1.$2")
+                        .replace(/(\d{3})(\d{1})$/, "$1-$2");
+                    campoDoc.value = v;
+                };
+            } else {
+                campoDoc.setAttribute("placeholder", "Número do documento");
+                campoDoc.removeAttribute("maxlength");
+                campoDoc._maskHandler = function () {
+                    campoDoc.value = campoDoc.value.toUpperCase();
+                };
+            }
+
+            campoDoc.addEventListener("input", campoDoc._maskHandler);
+        }
+
+        selectTipo.addEventListener("change", aplicar);
+        aplicar();
+    }
+
+    // Data de Nascimento: dd-mm-aaaa
+    function aplicarMascaraDataNascimento(campo) {
+        campo.setAttribute("placeholder", "dd-mm-aaaa");
+        campo.setAttribute("maxlength", "10");
+
+        // Se já vier preenchido (edição), converte aaaa-mm-dd -> dd-mm-aaaa para exibir
+        if (campo.value) {
+            const partes = campo.value.split("-");
+            if (partes.length === 3 && partes[0].length === 4) {
+                const [ano, mes, dia] = partes;
+                campo.value = `${dia}-${mes}-${ano}`;
+            }
+        }
+
+        campo.addEventListener("input", function () {
+            let v = campo.value.replace(/\D/g, "").slice(0, 8);
+            if (v.length > 4) {
+                v = v.replace(/(\d{2})(\d{2})(\d{0,4})/, "$1-$2-$3");
+            } else if (v.length > 2) {
+                v = v.replace(/(\d{2})(\d{0,2})/, "$1-$2");
+            }
+            campo.value = v;
+        });
+
+        // Converte dd-mm-aaaa -> aaaa-mm-dd antes de enviar o form
+        const form = campo.closest("form");
+        if (form) {
+            form.addEventListener("submit", function () {
+                const partes = campo.value.split("-");
+                if (partes.length === 3) {
+                    const [dia, mes, ano] = partes;
+                    campo.value = `${ano}-${mes}-${dia}`;
+                }
+            });
+        }
+    }
+
+    const campoTelefone = document.getElementById("id_telefone");
+    const campoEmergencia = document.getElementById("id_contato_emergencia");
+    const campoDocumento = document.getElementById("id_documento");
+    const selectTipoDocumento = document.getElementById("tipo_documento_select");
+    const campoDataNascimento = document.getElementById("id_data_nascimento");
+
+    if (campoDataNascimento) aplicarMascaraDataNascimento(campoDataNascimento);
+    if (campoTelefone) aplicarMascaraTelefone(campoTelefone);
+    if (campoEmergencia) aplicarMascaraTelefone(campoEmergencia);
+    if (campoDocumento && selectTipoDocumento) {
+        configurarMascaraDocumento(campoDocumento, selectTipoDocumento);
+    }
+
 });
