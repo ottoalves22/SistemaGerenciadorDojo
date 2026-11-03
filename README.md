@@ -9,14 +9,11 @@ Oss!
  - #TODO: Criar recuperação de arquivo na tela do aluno (criar codigo de "download" do arquivo)
 
 
-# update3 08/10/2026
-- Adição das máscaras de formatação de dados para formulários afim de facilitar o uso do formulário e também garantir consistência de tipo de dado no bd
-- Adição do campo de seleção de tipo de documento já que aceitamos mais de um tipo. A máscara de formatação acompanha o tipo de documento selecionado 
-- Teste de funcionalidade do campo de arquivos para que seja possível baixar seu conteúdo prévio. (conceito em revisão, nenhum teste subiu para main)
-- #TODO: revisar e definir nova funcionalidade 
+# update2 01/10/2026
+ - Adição do esqueleto da funcionalidade de whatsapp (Eles precisam MUITO de um lembrete de pagamento acessível)
+ - #TODO: Criar token da meta e verificar o uso de um VoIP pra não ter de comprar outro chip de telefone
 
-# update4 13/10/2026
- - Adição de botões de Registrar Pagamento na listagem de Alunos para facilitar uso
- - Comecei a configurar o bucket e o envio de arquivos no formulario de aluno - Estou tendo dor de cabeça com as policies e keys. Vou arrumar daqui umas horas
- - Limpei as migrations que tavam travando (migration 12). Deixa pra rodar cada uma em cada ambiente
- 
+# update3 02/10/2026
+ - Criação de branch para deploy em produção deploy_production. Vamos usar a branch main como desenvolvimento. Atualizações por meio de Pull Request main -> deploy_production
+ - Criação de banco de dados na Oracle CLoud
+ - Atualização do código de produção (na branch deploy_production) para usar Oracle DB

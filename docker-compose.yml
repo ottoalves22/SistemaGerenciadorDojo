@@ -1,20 +1,4 @@
 services:
-  db:
-    image: postgres:15
-    container_name: sgd_postgres
-    restart: unless-stopped
-
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-    networks:
-      - sgd_network
-
   web:
     ports:
       - "8000:8000"
@@ -45,7 +29,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_HOST: db
       POSTGRES_PORT: 5432
-      OCI_AUTH: config_file
       OCI_CONFIG_FILE: /root/.oci/config
       OCI_BUCKET_NAME: ornellas-dojo-files
       OCI_NAMESPACE: grcdvqigfkdr
@@ -55,36 +38,34 @@ services:
 
     volumes:
       - static_volume:/app/sistemaGerenciadorDojo/staticfiles
-      - /home/otto/.oci:/root/.oci:ro
 
     networks:
       - sgd_network
 
-  # nginx:
-  #   image: nginx:1.27-alpine
-  #   container_name: sgd_nginx
-  #   restart: unless-stopped
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: sgd_nginx
+    restart: unless-stopped
 
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
+    ports:
+      - "80:80"
+      - "443:443"
 
-  #   volumes:
-  #     - ./nginx/conf.d:/etc/nginx/conf.d:ro
-  #     - staticfiles:/app/staticfiles:ro
-  #     - static_volume:/static
-  #     - ./certbot/www:/var/www/certbot      # SEM :ro, para o Certbot escrever
-  #     - ./certbot/conf:/etc/letsencrypt 
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - staticfiles:/app/staticfiles:ro
+      - static_volume:/static
+      - ./certbot/www:/var/www/certbot      # SEM :ro, para o Certbot escrever
+      - ./certbot/conf:/etc/letsencrypt 
 
 
-  #   depends_on:
-  #     - web
+    depends_on:
+      - web
 
-  #   networks:
-  #     - sgd_network
+    networks:
+      - sgd_network
 
 volumes:
-  postgres_data:
   staticfiles:
   certbot_www:
   letsencrypt:
