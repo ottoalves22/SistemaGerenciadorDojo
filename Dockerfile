@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 COPY pyproject.toml uv.lock* ./
 
 # Instala uv e dependências
-RUN pip install uv && uv sync --frozen
+RUN pip install uv==0.12.22 && uv sync --frozen
 
 # Copia o código
 COPY . .
