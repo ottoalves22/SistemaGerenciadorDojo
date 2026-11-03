@@ -33,8 +33,6 @@ services:
       OCI_BUCKET_NAME: ornellas-dojo-files
       OCI_NAMESPACE: grcdvqigfkdr
       OCI_REGION: sa-saopaulo-1
-    depends_on:
-      - db
 
     volumes:
       - static_volume:/app/sistemaGerenciadorDojo/staticfiles
